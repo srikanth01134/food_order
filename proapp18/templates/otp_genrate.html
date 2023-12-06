@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP_PAGE</title>
+</head>
+<body>
+    <h1>OTP Confirm</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="id_otp">Enter OTP</label>
+        <input type="text" name="otp_confirm" id="id_otp"><br>
+        <input type="submit" value="OTP SUBMIT">
+    </form>
+</body>
+</html>

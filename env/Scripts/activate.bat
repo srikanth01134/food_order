@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\srika\OneDrive\Documents\GitHub\food_order\env
+set VIRTUAL_ENV=C:\Users\Admin\OneDrive\Desktop\DJANGO\PROJECT18_LOGIN\env
 
 if not defined PROMPT set PROMPT=$P$G
 
