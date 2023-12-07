@@ -17,16 +17,17 @@
         #demo{
             width: 500px;
             margin-top: 150px;
-            text-align: center;
+            margin-left: 200px;
+            /* text-align: center; */
         }
         button{
             border: none;
             background-color: black;
             color: white;
         }
-        form{
+        /* form{
             text-align: center;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -35,9 +36,9 @@
             <h1 style="color: yellowgreen;">Register Page</h1>
             <form action="" method="post">
                 {% csrf_token %}
-                <table>
-                    {{form}}
-                </table> <br>
+            
+                    {{form.as_p}}
+                
                 <input type="submit" value="Register">
             </form>
             <h3>Already User ?  <a href="{% url 'proapp18:login' %}"><button>Login</button></a></h3>
