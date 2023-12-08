@@ -6,3 +6,4 @@ class customer_model(User):
     phone = models.PositiveBigIntegerField()
     dob = models.DateField(auto_now=False,auto_now_add=False)
     gender = models.CharField(max_length=10,choices=[['Male','Male'],['Female','Female']])
+
