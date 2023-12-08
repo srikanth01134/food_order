@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item_deletepage</title>
+</head>
+<body>
+    <h2>Here you can delete the data</h2>
+    <h1>The product Id is:{{data.item_id}} and the product name is :{{data.item_name}}</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" name="" id="" value="delete">
+    </form>
+    <a href="{%url 'crud_app:items_list' %}"><button>Back to list</button></a>
+</body>
+</html>
