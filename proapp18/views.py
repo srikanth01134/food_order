@@ -8,6 +8,12 @@ import random
 
 # Create your views here.
 
+
+def start_view(request):
+    return render(request,'start.html')
+
+
+
 def customer_register(request):
     form = customer_form()
     if request.method == 'POST':
