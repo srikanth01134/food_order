@@ -28,23 +28,12 @@ form{
     color: black;
     text-align: center;
 }
-
-span{
-   
-    border: 1px solid;
-    display: block;
-}
 #header-1{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
     /* border: 1px solid; */
     display: flex;
     justify-content: space-evenly;
-    color: white;
-    background-color: rgb(28, 26, 26);
+    background-color:gray;
 }
-#img-1{
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
+#a{
+    color: aliceblue;
 }
