@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <link rel="stylesheet" href="{% static '/css/register.css'%}">
     <title>Register_Page</title>
-   <link rel="stylesheet" href="{% static '/css/register.css'%}">
+   
 </head>
 <body>
     <div>
-        <header id="header-1">
-               
-                <a href="" id="a">AboutUs</a>
-                <a href="">ContactUs</a>
-                <a href="">Feedback</a>
-                <a href="">For special offers</a>
+        <header id="header">
+            <img src="{% static '/images/burger.avif'%}" alt="">
+            <img src="{%static '/images/ima.jpeg'%}" alt="" id="img-2">
+        <li><a href="">AboutUs</a></li>
+        <li><a href="">ContactUs</a></li>
+        <li><a href="">Feedback</a></li>
+        <li><a href="">Add Restaurnt</a></li>
         </header>
     </div>
     <div id="demo1">
@@ -28,6 +30,7 @@
             </form>
             
         </div>
+        <aside><img src="{%static '/images/pexels.jpeg'%}" alt="" id="aside-img"></aside>
     </div>
 </body>
 </html>
