@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
     <title>Home_page</title>
 </head>
 <body>
-    <pre>
-        Welcome to my project 
-            Home Page 
-            {{user}}
-            <div id="" class=""></div>
+            <div id="div1" class=""> 
+            <section>
+                            <div id="" class="section1-div"><a href=""><img  id="li1" class="ul-li1" src="{% static '/images/download.jpeg'%}" alt=""> <p>Chicken Biriyani</p></a>  </div>
+        
+                            <div id="" class="section1-div"><a href=""><img  id="li2" class="ul-li1" src="{% static '/images/ima.jpeg' %}" alt=""><p>Mutton Biriyani</p></a></div>
+        
+                    <div id="" class="section1-div"><a href=""><img  id="li3" class="ul-li1" src="{% static '/images/download1.jpeg'%}" alt=""><p> salads</p></a></div>
+                            <div id="" class="section1-div"><a href=""><img  id="li4" class="ul-li1" src="{% static '//images/pizaa.jpg'%}" alt=""><p>Pizza</p></a></div>
+                            <div id="" class="section1-div"><a href=""><img  id="li5" class="ul-li1" src="{% static '/images/shawarma.jpg'%}" alt=""><p>shawarma</p></a></div>
+                            <div id="" class="section1-div"><a href=""><img  id="li6" class="ul-li1" src="{% static '/images/burger.avif'%}" alt=""><p>Burger</p></a></div>
+                            <div id="" class="section1-div"><a href=""><img  id="li7" class="ul-li1" src="{% static '/images/icecream.jpg '%}" alt=""><p>Ice-Cream</p></a></div>
+                            <div id="" class="section1-div"><a href=""><img  id="li8" class="ul-li1" src="{% static '/images/thali.jpg'%}" alt=""><p>Thali</p></a></div>
+                    </section>
+
+            </div>
+            <br>
+            <div id="main-wall" class="">
+                <img id="img-wall" src="{% static 'images/wallpaper.jpeg'%}" alt="">
+            </div>
             <div id="" class=""></div>
             <div id="" class=""></div>
             <div id="" class=""></div>
@@ -21,6 +37,5 @@
             <div id="" class=""></div>
             <div id="" class=""></div>
         <a href="{% url 'proapp18:logout' %}"><button>Logout</button></a>
-    </pre>
 </body>
 </html>
