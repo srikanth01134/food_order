@@ -3,7 +3,7 @@ from proapp18.views import customer_register,login_view,home_view,logout_view,ot
 app_name = 'proapp18'
 
 urlpatterns = [
-    path(route='',view=start_view,name='start'),
+    path(route='start/',view=start_view,name='start'),
     path(route='register/',view=customer_register,name='register'),
     path(route='login/',view=login_view,name='login'),
     path(route='home/',view=home_view, name='home'),
