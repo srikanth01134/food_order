@@ -19,10 +19,8 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
     path('proapp18/',view=include('proapp18.urls'),name='proapp18'),
-=======
     path('',view=include('proapp18.urls'),name='proapp18'),
->>>>>>> 0286336718a68ff9315ef6cd813a1cb139331681
+
     path('crud_app/',view=include('crud_app.urls'),name='crud_app'),
 ]

@@ -9,6 +9,7 @@
     <title>Home_page</title>
 </head>
 <body>
+
     <div id="div1" class=""> 
         <section>
             <div id="" class="section1-div"><a href=""><img  id="li1" class="ul-li1" src="{% static '/images/download.jpeg'%}" alt=""> <p>Chicken Biriyani</p></a>  </div>
@@ -24,12 +25,12 @@
 
         <br>
 
-    <div id="main-wall" class="">
-        <img id="img-wall" src="{% static 'images/wallpaper.jpeg'%}" alt="">
-    </div>
+    <!-- <div id="main-wall" class="">
+        <img id="img-wall" src="{% static 'images/imagesback.jpeg'%}" alt="">
+    </div> -->
 
         <br>
-
+<div id="body">
     <div id="cards" class="">
         <div id="cards">
             <div class="card mb-3" style="max-width: 540px;">
@@ -186,5 +187,7 @@
     <!-- {% include "partials/_boostjs.html" %} -->
         <a href="{% url 'proapp18:logout' %}"><button>Logout</button></a>
         <a href="{% url 'crud_app:items' %}"><button>ITEMS PAGE</button></a>
+
+      </div>
 </body>
 </html>
