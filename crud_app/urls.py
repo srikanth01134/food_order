@@ -1,5 +1,5 @@
 from django.urls import path
-from crud_app.views import catagory_view,display,updates,deletes,veg,items_view,item_update,items_list,item_delete
+from crud_app.views import catagory_view,display,updates,deletes,veg,items_view,item_update,items_list,item_delete,non_view
 app_name='crud_app'
 
 urlpatterns=[
@@ -12,4 +12,5 @@ urlpatterns=[
     path(route='items_list/',view=items_list,name='items_list'),
     path(route='item_update/<int:pk>/',view=item_update,name='item_update'),
     path(route='item_delete/<int:pk>/',view=item_delete,name='item_delete'),
+    path(route='non_view/',view=non_view,name='non_view'),
 ]

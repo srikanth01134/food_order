@@ -72,3 +72,7 @@ def item_delete(request,pk):
         res=food_model.objects.get(item_id=pk).delete()
         return redirect('/crud_app/items_list')
     return render(request,'items_delete.html',context={'data':res})
+
+
+def non_view(request):
+    return render(request,'non_veg.html')

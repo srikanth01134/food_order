@@ -6,7 +6,8 @@ urlpatterns = [
     path(route='start/',view=start_view,name='start'),
     path(route='register/',view=customer_register,name='register'),
     path(route='login/',view=login_view,name='login'),
+    path(route='otp/',view=otp_view,name='otp'),
     path(route='home/',view=home_view, name='home'),
     path(route='logout/',view=logout_view,name='logout'),
-    path(route='otp_confirm/',view=otp_view,name='otp'),
+    
 ]

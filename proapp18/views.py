@@ -71,7 +71,7 @@ def login_view(request):
                         OTP CONFIRM : {otp}
                         '''
                 send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-                return redirect('/otp_confirm')
+            return redirect('/otp')
     return render(request=request,template_name='login.html',context={'form':form})
 
 

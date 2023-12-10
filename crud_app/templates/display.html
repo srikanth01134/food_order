@@ -28,7 +28,7 @@
             <td>{{i.category_desc}}</td>
             <td><a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a></td>
             <td><a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>delete</button></a></td>
-            
+             
         </tr>
         {% endfor %}
     </table>
