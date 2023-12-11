@@ -1,5 +1,5 @@
 from django.urls import path
-from proapp18.views import customer_register,login_view,home_view,logout_view,otp_view,start_view
+from proapp18.views import customer_register,login_view,home_view,logout_view,otp_view,start_view,hotel1_view
 app_name = 'proapp18'
 
 urlpatterns = [
@@ -9,5 +9,5 @@ urlpatterns = [
     path(route='otp/',view=otp_view,name='otp'),
     path(route='home/',view=home_view, name='home'),
     path(route='logout/',view=logout_view,name='logout'),
-    
+    path(route='hotel1/',view=hotel1_view,name='hotel')
 ]
