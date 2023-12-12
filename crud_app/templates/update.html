@@ -4,25 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=
     , initial-scale=1.0">
-    <title>Document</title>
+    <title>create_page</title>
 </head>
 <body>
-    <div>
-        <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Add" id="">
+    </form>
 
-            {% csrf_token %}
-    
-            <label for="category_name">category_name</label>
-            <input type="text" name="category_name" id="category_name" value="{{data.category_name}}"> <br>
-            
-            <label for="category_desc">category_desc</label>
-            <input type="text" name="category_desc" id="category_desc" value="{{data.category_desc}}"> <br>
-            
-            <input type="submit" value="update">
-        </form>
-    </div>
-    <div>
-        <a href="{% url 'crud_app:display' %}"><button>Display List</button></a>
-    </div>
 </body>
 </html>

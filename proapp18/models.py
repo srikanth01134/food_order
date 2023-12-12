@@ -14,5 +14,12 @@ class hotel_register(models.Model):
     email=models.EmailField(unique=True)
     phoneno=models.PositiveBigIntegerField(unique=True)
     image=models.ImageField()
+    time=models.IntegerField()
 
-        
+class hotel_rating(models.Model):
+    hotel_id=models.IntegerField()
+    rating=models.CharField(max_length=2,choices=[['1','1'],['2','2'],['3','3'],['4','4'],['5','5']])
+    comments=models.TextField(null=True)
+
+
+

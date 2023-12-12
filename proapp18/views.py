@@ -90,8 +90,14 @@ def logout_view(request):
     return redirect('/login')
 
 @login_required(login_url='/login')
-def home_view(request):
+def home_view1(request):
     return render(request=request,template_name='home.html')
+
+
+@login_required(login_url='/login')
+def home_view(request):
+    res=hotel_register.objects.all()
+    return render(request=request,template_name='Hotel_home.html',context={'data':res})
 
 def hotel1_view(request):
     return render(request=request,template_name='hotel1.html')
