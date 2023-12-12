@@ -101,6 +101,7 @@ def hotel_view(request):
     form=hotel_register_form()
     if request.method=='POST' and request.FILES:
         form=hotel_register_form(request.POST,request.FILES)
+        print(form)
         if form.is_valid():
             form.save()
         return redirect('/hotel_display')
@@ -116,6 +117,5 @@ def hotel_update(request,pk):
     if request.method=='POST' and request.FILES:
         form=hotel_register_form(request.POST,request.FILES,instance=res)
         if form.is_valid():
-            form.save()
             return redirect('/hotel_display')
     return render(request,'hotel_update.html',context={'form':form})

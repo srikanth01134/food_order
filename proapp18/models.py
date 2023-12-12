@@ -8,6 +8,7 @@ class customer_model(User):
     gender = models.CharField(max_length=10,choices=[['Male','Male'],['Female','Female']])
 
 class hotel_register(models.Model):
+    id=models.IntegerField(primary_key=True)
     restarunt_name=models.CharField(max_length=50)
     restarunt_address=models.CharField(max_length=200)
     email=models.EmailField(unique=True)
