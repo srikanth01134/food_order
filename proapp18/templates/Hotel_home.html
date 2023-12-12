@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+    
+
+    <title>Home_page</title>
+</head>
+<body>
+<!-- {%include 'partials/_header.html'%} -->
+    <div id="div1" class=""> 
+        <section>
+            <div id="" class="section1-div"><a href=""><img  id="li1" class="ul-li1" src="{% static '/images/download.jpeg'%}" alt=""> <p>Chicken Biriyani</p></a>  </div>
+            <div id="" class="section1-div"><a href=""><img  id="li2" class="ul-li1" src="{% static '/images/ima.jpeg' %}" alt=""><p>Mutton Biriyani</p></a></div>
+            <div id="" class="section1-div"><a href=""><img  id="li3" class="ul-li1" src="{% static '/images/download1.jpeg'%}" alt=""><p> salads</p></a></div>
+            <div id="" class="section1-div"><a href=""><img  id="li4" class="ul-li1" src="{% static '//images/pizaa.jpg'%}" alt=""><p>Pizza</p></a></div>
+            <div id="" class="section1-div"><a href=""><img  id="li5" class="ul-li1" src="{% static '/images/shawarma.jpg'%}" alt=""><p>shawarma</p></a></div>
+            <div id="" class="section1-div"><a href=""><img  id="li6" class="ul-li1" src="{% static '/images/burger.avif'%}" alt=""><p>Burger</p></a></div>
+        </section>
+    </div>
+        <br>
+
+    <!-- <div id="main-wall" class="">
+        <img id="img-wall" src="{% static 'images/imagesback.jpeg'%}" alt="">
+    </div> -->
+
+        <br>
+<div id="body">
+    <div id="cards" class="">
+        <div id="cards">
+            {% for i in data %}
+            <div class="card border-primary mb-3" style="max-width: 18rem;">
+                <div class="row g-0">
+                  <div class="col-md-2">
+                    <img src="{{i.image.url}}" class="img-fluid rounded-start" alt="..." height="75" width="75">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body text-primary">
+                      <h5 class="card-title">{{i.restarunt_name|title}}</h5>
+                      <p class="card-text">{{i.restarunt_address}}</p>
+                      <div>
+                      <p class="card-text"><small class="text-muted">{{i.email}}</small></p>
+                      <p class="card-text"><small class="text-muted">{{i.phoneno}}</small></p>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+              </div>
+              </div>
+        </div>
+    </div>
+        <br> 
+    <!-- {% include "partials/_boostjs.html" %} -->
+        <a href="{% url 'proapp18:logout' %}"><button>Logout</button></a>
+        <a href="{% url 'crud_app:items' %}"><button>ITEMS PAGE</button></a>
+
+      </div>
+</body>
+</html>

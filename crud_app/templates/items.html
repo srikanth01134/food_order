@@ -2,42 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <title>Products</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-    <div>
-        <form action="" method="post">
-
-            {% csrf_token %}
-            <label for="category_id">category_id</label>
-            <select name="category_id" id="is_category_id">
-                {% for i in item%}
-                <option value="{{i.category_id}}">{{i.category_name}}</option>
-                {% endfor %}
-            </select>
-    
-            <label for="item_name">item_name</label>
-            <input type="text" name="item_name" id="item_name"> <br>
-            
-            <label for="item_price">item_price</label>
-            <input type="text" name="item_price" id="item_price"> <br>
-
-            <label for="item_quantity">item_quantity</label>
-            <input type="text" name="item_quantity" id="item_quantity"> <br>
-
-            <label for="item_desc">item_desc</label>
-            <input type="text" name="item_desc" id="item_desc"> <br>
-            
-            <input type="submit" value="Save">
-        </form>
-    </div>
-    <div>
-        <a href="{% url 'crud_app:items_list' %}"><button>products list</button></a>
-    </div>
-    <div>
-        <a href="{% url 'crud_app:catagory_view'%}"> <button>Click here to create</button></a>
-    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="add_item">
+    </form>
 </body>
 </html>
