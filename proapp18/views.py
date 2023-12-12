@@ -12,8 +12,6 @@ import random
 def start_view(request):
     return render(request,'start.html')
 
-
-
 def customer_register(request):
     form = customer_form()
     if request.method == 'POST':
@@ -93,3 +91,6 @@ def logout_view(request):
 @login_required(login_url='/login')
 def home_view(request):
     return render(request=request,template_name='home.html')
+
+def hotel1_view(request):
+    return render(request=request,template_name='hotel1.html')
