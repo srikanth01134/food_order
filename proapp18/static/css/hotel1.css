@@ -1,0 +1,19 @@
+.cardsid{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar-nav{
+    display: flex;
+    width: 800px;
+    justify-content: space-evenly;
+    /* border: 2px solid green; */
+}
+
+.mb-3{
+    width: 540px;
+}
+
+#img1 img{
+    height: inherit;
+}
