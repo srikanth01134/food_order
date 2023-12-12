@@ -7,5 +7,11 @@ class customer_model(User):
     dob = models.DateField(auto_now=False,auto_now_add=False)
     gender = models.CharField(max_length=10,choices=[['Male','Male'],['Female','Female']])
 
+class hotel_register(models.Model):
+    restarunt_name=models.CharField(max_length=50)
+    restarunt_address=models.CharField(max_length=200)
+    email=models.EmailField(unique=True)
+    phoneno=models.PositiveBigIntegerField(unique=True)
+    image=models.ImageField()
 
-    
+        

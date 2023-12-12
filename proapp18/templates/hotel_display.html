@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display_page</title>
+</head>
+<body>
+    {% if res %}
+    <table border="2px">
+        <tr>
+            <th>id
+            </th>
+            <th>Restaurant_name</th>
+            <th>Restaurant_address</th>
+            <th>Email</th>
+            <th>Phoneno</th>
+            <th>image</th>
+            <th>update</th>
+            
+        </tr>
+    {% for i in res %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.restarunt_name}}</td>
+            <td>{{i.restarunt_address}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.phoneno}}</td>
+            <td><img src="{{i.image.url}}" alt="" height="50px" width="50px"></td>
+            <td><a href="{% url 'proapp18:hotel_display' pk=i.id %}"><button>update</button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h1>data not found</h1>
+    {% endif%}
+</body>
+</html>

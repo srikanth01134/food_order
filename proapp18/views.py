@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
-from proapp18.forms import customer_form,login_form
+from proapp18.forms import customer_form,login_form,hotel_register_form
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail 
 from django.conf import settings
+from django.http import HttpResponse
 import random
-
+from proapp18.models import hotel_register
 # Create your views here.
 
 
@@ -94,3 +95,27 @@ def home_view(request):
 
 def hotel1_view(request):
     return render(request=request,template_name='hotel1.html')
+
+
+def hotel_view(request):
+    form=hotel_register_form()
+    if request.method=='POST' and request.FILES:
+        form=hotel_register_form(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('/hotel_display')
+    return render(request,'hotel_register.html',context={'form':form})
+
+def hotel_display(request):
+    res=hotel_register.objects.all()
+    return render(request,'hotel_display.html',context={'res':res})
+
+def hotel_update(request,pk):
+    res=hotel_register.objects.get(id=pk)
+    form=hotel_register_form(instance=res)
+    if request.method=='POST' and request.FILES:
+        form=hotel_register_form(request.POST,request.FILES,instance=res)
+        if form.is_valid():
+            form.save()
+            return redirect('/hotel_display')
+    return render(request,'hotel_update.html',context={'form':form})

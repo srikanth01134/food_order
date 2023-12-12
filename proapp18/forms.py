@@ -1,5 +1,5 @@
 from django import forms 
-from proapp18.models import customer_model
+from proapp18.models import customer_model,hotel_register
 from django.contrib.auth.hashers import make_password
 import re
 
@@ -101,3 +101,8 @@ class login_form(forms.Form):
         if len(re.findall('[A-Z]', pwd)) == 0:
             raise  forms.ValidationError('altest 1 upper case')
         return pwd
+
+class hotel_register_form(forms.ModelForm):
+    class Meta:
+        model=hotel_register
+        fields='__all__'
