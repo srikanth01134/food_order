@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
-            font-size: large;
-            border: 1px solid black;
-        }
+        
     </style>
 </head>
 <body>
-    {% if data %}
-    <table>
+    {% if form %}
+    <table  border="2">
         <tr>
             <th>category_id</th>
             <th>Item_id</th>
@@ -21,10 +18,11 @@
             <th>Item_Price</th>
             <th>Item_quantity</th>
             <th>Item_desc</th>
+            <th>image</th>
             <th>update</th>
             <th>Delete</th>
         </tr>
-        {% for i in data %}
+        {% for i in form %}
         <tr>
             <td>{{i.category_id_id}}</td>
             <td>{{i.item_id}}</td>
@@ -32,6 +30,7 @@
             <td>{{i.item_price}}</td>
             <td>{{i.item_quantity}}</td>
             <td>{{i.item_desc}}</td>
+            <td><img src="{{i.item_image.url}}" alt="...." height="50" width="50"></td>
              <td><a href="{% url 'crud_app:item_update' pk=i.item_id %}"><button>update</button></a></td>
             <td><a href="{% url 'crud_app:item_delete' pk=i.item_id %}"><button>delete</button></a></td> 
             

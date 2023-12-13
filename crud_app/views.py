@@ -8,29 +8,28 @@ def catagory_view(request):
         form=category_form(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/display')
+            return redirect('crud_app/display')
     return render(request,'category.html',context={'form':form})
 
 def display(request):
     res=category_model.objects.all()
-    return render(request,'display.html',context={'data':res})
+    return render(request,'display.html',context={'form':res})
 
 def updates(request,pk):
-    res=category_model.objects.get(category_id=pk)
-    form=category_form(instance=res)
+    form=category_form(instance=category_model.objects.get(category_id=pk))
     if request.method=='POST':
-        form=category_form(request.POST,instance=res)
+        form=category_form(request.POST,instance=category_model.objects.get(category_id=pk))
         if form.is_valid():
             form.save()
-        return redirect('/display')
-    return render(request,'update.html',context={'data':res})
+        return redirect('crud_app/display')
+    return render(request,'update.html',context={'form':form})
 
 def deletes(request,pk):
     res=category_model.objects.get(category_id=pk)
     if request.method=='POST':
         res=category_model.objects.get(category_id=pk).delete()
-        return redirect('/display')
-    return render(request,'delete.html',context={'data':res})
+        return redirect('crud_app/display')
+    return render(request,'delete.html',context={'form':res})
 
 
 #items for  category
@@ -40,13 +39,13 @@ def items_view(request):
         form=item_form(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/crud_app/items_list')
+        return redirect('crud_app/items_list')
     return render(request,'items.html',context={'form':form})
 
 
 def items_list(request):
     res=food_model.objects.all()
-    return render(request,'items_list.html',context={'data':res})
+    return render(request,'items_list.html',context={'form':res})
 
 
 def item_update(request,pk):
@@ -56,16 +55,14 @@ def item_update(request,pk):
         form=item_form(request.POST,request.FILES,instance=res)
         if form.is_valid():
             form.save()
-        return redirect('/crud_app/items_list')
-    return render(request,'items_update.html',context={'data':res})
+        return redirect('crud_app/items_list')
+    return render(request,'items_update.html',context={'form':form})
 
 def item_delete(request,pk):
     res=food_model.objects.get(item_id=pk)
     if request.method=='POST':
         res=food_model.objects.get(item_id=pk).delete()
         return redirect('/crud_app/items_list')
-    return render(request,'items_delete.html',context={'data':res})
+    return render(request,'items_delete.html',context={'form':res})
 
 
-def non_view(request):
-    return render(request,'non_veg.html')

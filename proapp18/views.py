@@ -35,7 +35,7 @@ def customer_register(request):
                     We think that your experience and skills will be a valuable asset to our company.
                     '''
             send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-            return redirect('/login')
+            return redirect('/proapp18/login')
     return render(request=request,template_name='register.html',context={'form':form})
 
 
@@ -70,24 +70,24 @@ def login_view(request):
                         OTP CONFIRM : {otp}
                         '''
                 send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-            return redirect('/otp')
+            return redirect('/proapp18/otp')
     return render(request=request,template_name='login.html',context={'form':form})
 
 
 def otp_view(request):
     if request.method == 'POST':
         if str(otp_confirm) == str(request.POST['otp_confirm']):
-            return redirect('/home')
+            return redirect('/proapp18/home')
         else:
             logout(request)
-            return redirect('/login')
+            return redirect('/proapp18/login')
     return render(request=request, template_name='otp_genrate.html')
 
 
 @login_required(login_url='/login')
 def logout_view(request):
     logout(request)
-    return redirect('/login')
+    return redirect('/proapp18/login')
 
 @login_required(login_url='/login')
 def home_view1(request):
@@ -110,7 +110,7 @@ def hotel_view(request):
         print(form)
         if form.is_valid():
             form.save()
-        return redirect('/hotel_display')
+        return redirect('/proapp18/hotel_display')
     return render(request,'hotel_register.html',context={'form':form})
 
 def hotel_display(request):
@@ -123,5 +123,7 @@ def hotel_update(request,pk):
     if request.method=='POST' and request.FILES:
         form=hotel_register_form(request.POST,request.FILES,instance=res)
         if form.is_valid():
-            return redirect('/hotel_display')
+            form.save()
+            return redirect('/proapp18/hotel_display')
     return render(request,'hotel_update.html',context={'form':form})
+

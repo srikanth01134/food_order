@@ -15,6 +15,8 @@ class hotel_register(models.Model):
     phoneno=models.PositiveBigIntegerField(unique=True)
     image=models.ImageField()
     time=models.IntegerField()
+    def __str__(self):
+        return self.restarunt_name
 
 class hotel_rating(models.Model):
     hotel_id=models.IntegerField()

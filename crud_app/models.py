@@ -4,6 +4,8 @@ class category_model(models.Model):
     category_id=models.AutoField(primary_key=True)
     category_name=models.CharField(max_length=30)
     category_desc=models.TextField()
+    def __str__(self):
+        return self.category_name
     
 class food_model(models.Model):
     hotel_id=models.ForeignKey(hotel_register,on_delete=models.CASCADE)

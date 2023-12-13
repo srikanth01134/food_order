@@ -12,8 +12,8 @@
     </style>
 </head>
 <body>
-    {% if data %}
-    <table>
+    {% if form %}
+    <table border="2">
         <tr>
             <th>category_id</th>
             <th>category_name</th>
@@ -21,10 +21,10 @@
             <th>update</th>
             <th>Delete</th>
         </tr>
-        {% for i in data %}
+        {% for i in form %}
         <tr>
-           <td>  {{i.category_id}}</td>
-          <td> {{i.category_name}}</td>
+           <td>{{i.category_id}}</td>
+          <td>{{i.category_name}}</td>
             <td>{{i.category_desc}}</td>
             <td><a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a></td>
             <td><a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>delete</button></a></td>

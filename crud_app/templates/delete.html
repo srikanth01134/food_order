@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Delete page</h2>
-    <h4>Are you sure to delete the record id: {{data.category_id}}  catagory name :{{data.category_name}}</h4><br>
+    <h4>Are you sure to delete the record id: {{form.category_id}}  catagory name :{{form.category_name}}</h4><br>
     <form action="" method="post">
         {% csrf_token %}
         <input type="submit" name="" id="" value="delete">
