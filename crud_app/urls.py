@@ -3,10 +3,12 @@ from crud_app.views import catagory_view,display,updates,deletes,items_view,item
 app_name='crud_app'
 
 urlpatterns=[
+    #========FOR CATEGORY CREATED BY THE HOTEL_REGISTER======
     path(route='catagory/',view=catagory_view,name='catagory'),
     path(route='display/',view=display,name='display'),
     path(route='updates/<int:pk>/',view=updates,name='updates'),
     path(route='deletes/<int:pk>/',view=deletes,name='deletes'),
+    #========FOR ITEMS CREATED ==============================
      path(route='items/',view=items_view,name='items'),
     path(route='items_list/',view=items_list,name='items_list'),
     path(route='item_update/<int:pk>/',view=item_update,name='item_update'),

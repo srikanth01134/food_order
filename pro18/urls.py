@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('proapp18/',view=include('proapp18.urls'),name='proapp18'),
     path('crud_app/',view=include('crud_app.urls'),name='crud_app'),
+    path('cart_app/',view=include('cart_app.urls'),name='cart_app'),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

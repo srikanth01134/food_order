@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        {% if res %}
+        <h2>welcome to {{user}}</h2>
+        <h3>Your cart</h3>
+        <table border="2px">
+            <tr>
+                <td>item_id</td>
+                <td>item_name</td>
+                <td>item_price</td>
+                <td>Remove</td>
+            </tr>
+
+            {% for i in res %}
+            <tr>
+                <td>{{i.item_id}}</td>
+                {% for j in prod_data %}
+                    {% if j.item_id== i.item_id%}
+                        <td>{{j.item_name}}</td>
+                        <td>{{j.price}}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <h1>TOtal_price: {{total_price.price__sum}}</h1>
+        </table>
+    </div>
+    
+</body>
+</html>
