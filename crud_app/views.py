@@ -21,14 +21,14 @@ def updates(request,pk):
         form=category_form(request.POST,instance=category_model.objects.get(category_id=pk))
         if form.is_valid():
             form.save()
-        return redirect('crud_app/display')
+        return redirect('/crud_app/display')
     return render(request,'update.html',context={'form':form})
 
 def deletes(request,pk):
     res=category_model.objects.get(category_id=pk)
     if request.method=='POST':
         res=category_model.objects.get(category_id=pk).delete()
-        return redirect('crud_app/display')
+        return redirect('/crud_app/display')
     return render(request,'delete.html',context={'form':res})
 
 

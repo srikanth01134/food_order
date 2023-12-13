@@ -35,7 +35,7 @@ def customer_register(request):
                     We think that your experience and skills will be a valuable asset to our company.
                     '''
             send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-        return redirect('/proapp18/login')
+            return redirect('/proapp18/login')
     return render(request=request,template_name='register.html',context={'form':form})
 
 
