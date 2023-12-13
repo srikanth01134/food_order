@@ -35,7 +35,7 @@ def customer_register(request):
                     We think that your experience and skills will be a valuable asset to our company.
                     '''
             send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-            return redirect('/proapp18/login')
+        return redirect('/proapp18/login')
     return render(request=request,template_name='register.html',context={'form':form})
 
 
@@ -127,3 +127,9 @@ def hotel_update(request,pk):
             return redirect('/proapp18/hotel_display')
     return render(request,'hotel_update.html',context={'form':form})
 
+def hotel_delete(request,pk):
+    res=hotel_register.objects.get(id=pk)
+    if request.method=='POST':
+         res=hotel_register.objects.get(id=pk).delete()
+         return redirect('/proapp18/hotel_display')
+    return render(request,'hotel_delete.html',context={'res':res})

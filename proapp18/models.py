@@ -25,3 +25,4 @@ class hotel_rating(models.Model):
 
 
 
+

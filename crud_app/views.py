@@ -39,8 +39,9 @@ def items_view(request):
         form=item_form(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('crud_app/items_list')
+            return redirect('/crud_app/items_list')
     return render(request,'items.html',context={'form':form})
+
 
 
 def items_list(request):
@@ -55,7 +56,7 @@ def item_update(request,pk):
         form=item_form(request.POST,request.FILES,instance=res)
         if form.is_valid():
             form.save()
-        return redirect('crud_app/items_list')
+        return redirect('/crud_app/items_list')
     return render(request,'items_update.html',context={'form':form})
 
 def item_delete(request,pk):

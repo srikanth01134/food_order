@@ -27,11 +27,14 @@
             <td>{{i.phoneno}}</td>
             <td><img src="{{i.image.url}}" alt="" height="50px" width="50px"></td>
             <td><a href="{% url 'proapp18:hotel_update' pk=i.id %}"><button>update</button></a></td>
+            <td><a href="{% url 'proapp18:hotel_delete' pk=i.id %}"><button>delete</button></a></td>
         </tr>
         {% endfor %}
     </table>
     {% else %}
     <h1>data not found</h1>
     {% endif%}
+    <a href="{% url 'proapp18:home'%}"><button>Home</button></a>
+    <a href="{% url 'proapp18:hotel_register'%}"><button>hotel_register</button></a>
 </body>
 </html>
