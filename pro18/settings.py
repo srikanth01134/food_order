@@ -16,7 +16,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIRS=os.path.join(BASE_DIR,'templates')
 PROAPP18_STATIC_DIRS=os.path.join(os.path.join(BASE_DIR,'proapp18'),'static')
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
+
+STATIC_DIRS=os.path.join(BASE_DIR,'static')
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -38,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles','proapp18','crud_app','cart_app'
+    'django.contrib.staticfiles','proapp18',
+    'crud_app',
+    'cart_app',
+    'buy_app',
+    'owner_app',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL='media/'
-STATICFILES_DIRS=[PROAPP18_STATIC_DIRS]
+STATICFILES_DIRS=[PROAPP18_STATIC_DIRS,STATIC_DIRS]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

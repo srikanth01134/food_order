@@ -7,6 +7,12 @@
 </head>
 <body>
     <div>
+        {%if messages %}
+        {% for i in messages %}
+        <h5>{{i}}</h5>
+        {% endfor %}
+        {% endif %}
+
         {% if res %}
         <h2>welcome to {{user}}</h2>
         <h3>Your cart</h3>
@@ -20,18 +26,26 @@
 
             {% for i in res %}
             <tr>
-                <td>{{i.item_id}}</td>
+                <td>{{i.your_item_id}}</td>
                 {% for j in prod_data %}
-                    {% if j.item_id== i.item_id%}
+                    {% if j.item_id == i.your_item_id %}
                         <td>{{j.item_name}}</td>
-                        <td>{{j.price}}</td>
-                    {% endif %}
+                        <td>{{j.item_price}}</td>
+                    {% endif %} 
                 {% endfor %}
+                <td><a href="{% url 'cart_app:cart_remove' cart_id=i.cart_id %}"><button>Remove</button></a></td>
             </tr>
             {% endfor %}
-            <h1>TOtal_price: {{total_price.price__sum}}</h1>
         </table>
-    </div>
-    
+        <h1>Total_price: {{total_price.price__sum}}</h1>
+        </div>
+        <a href="{% url 'crud_app:items_list' %}"><button>items_display</button></a>
+        <a href="{% url 'buy_app:buy_register' total_price=total_price.price__sum %}"><button>Buy now</button></a>
+        {% else %}
+        <h2>cart is empty</h2>
+        <a href="{% url 'crud_app:items_list' %}"> <button>Item Display</button></a>
+        {% endif %}
+        
+   
 </body>
 </html>

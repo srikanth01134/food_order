@@ -9,5 +9,5 @@ class cart_model(models.Model):
     customer_name=models.CharField(max_length=110)
     your_item_id=models.IntegerField()
     your_item_name=models.CharField(max_length=150)
-    price=models.FloatField()
-    
+    price=models.PositiveIntegerField()
+    quantity=models.PositiveIntegerField()

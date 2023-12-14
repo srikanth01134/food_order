@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <table border="2px solid">
+            <tr>
+                <th>Cust_id</th>
+                <th>Item_id</th>
+                <th>Item_name</th>
+                <th>Quantity</th>
+                
+            </tr>
+            {%for i in prod_data %}
+            <tr>
+                <td>{{i.customer_id}}</td>
+                <td>{{i.your_item_id}}</td>
+                <td>{{i.your_item_name}}</td>
+                <td>{{i.quantity}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        <h3>Total_price:  {{total_price.price__sum}}</h3>
+        <a href="{% url 'buy_app:buy_register' total_price=total_price.price__sum %}"><button>Buy NOW</button></a>
+
+    </div>
+</body>
+</html>

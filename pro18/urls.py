@@ -18,12 +18,15 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from pro18.views import main_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('proapp18/',view=include('proapp18.urls'),name='proapp18'),
     path('crud_app/',view=include('crud_app.urls'),name='crud_app'),
     path('cart_app/',view=include('cart_app.urls'),name='cart_app'),
+    path('buy_app/',view=include('buy_app.urls'),name='buy_app'),
+    path('owner_app/',view=include('owner_app.urls'),name='owner_app'),
+    
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

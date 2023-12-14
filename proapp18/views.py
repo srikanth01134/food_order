@@ -22,9 +22,7 @@ def customer_register(request):
             email = form.cleaned_data['email']
             subject = "Welcome to TCS Company"
             msg = '''Dear Ncs  Employee,
- 
                     Congratulation! 
- 
                     We are pleased to confirm that you have been selected to work for our company we are delighted to make you the following job offer as a DATA ENTRY OPERATOR.
  
                     we are glad to inform you that your resume has been selected for the job.  we are confident and look forward to working with you.  Please confirm your acceptance of this offer 
