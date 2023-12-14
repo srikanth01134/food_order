@@ -61,10 +61,10 @@ def login_view(request):
                     send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
                     login(request, user)  
                     print("haii")  
-                    return redirect('/owner_app/otp_view')
+                    return redirect('/owner_app/otp_view/')
             else:
                 messages.error(request,'username and password is incorrect ')
-    return render(request=request,template_name='login.html',context={'form':form})
+    return render(request=request,template_name='owner_login.html',context={'form':form})
 
 def otp_view(request):
     if request.method == 'POST':
@@ -74,5 +74,5 @@ def otp_view(request):
         else:
             print("hello")
             logout(request)
-            return redirect('/owner_app/owner_login')
-    return render(request=request, template_name='otp_genrate.html')
+            return redirect('/owner_app/owner_login/')
+    return render(request=request, template_name='owner_otp.html')

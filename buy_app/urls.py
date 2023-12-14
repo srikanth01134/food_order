@@ -5,5 +5,5 @@ app_name='buy_app'
 urlpatterns=[
     path(route='buy_register/<int:total_price>/',view=buy_register,name='buy_register'),
     path(route='buy_view/',view=buy_view,name='buy_view'),
-    path(route='order_details/<int:order_id>/',view=order_details,name='order_details')
+    path(route='order_details/<order_id>/',view=order_details,name='order_details')
 ]
