@@ -19,6 +19,6 @@
     </table>
     <input type="submit" value="Register">
     </form>
-    <a href="{% url 'owner_app:owner_login'%}"><button>Login_page</button></a>
+    <a href="{% url 'owner_app:owner_login' pk=user.id%}"><button>Login_page</button></a>
 </body>
 </html>

@@ -2,7 +2,7 @@ from django import forms
 from owner_app.models import  owner_model
 from django.contrib.auth.hashers import make_password
 import re
-
+from owner_app.validators import clean_Enter_password
 class owner_form(forms.ModelForm):
     class Meta:
         model=owner_model
@@ -57,3 +57,27 @@ class login_form(forms.Form):
         if len(re.findall('[A-Z]', pwd)) == 0:
             raise  forms.ValidationError('altest 1 upper case')
         return pwd
+
+
+
+class change_password_form(forms.Form):
+    Enter_password=forms.CharField(widget=forms.PasswordInput,validators=[clean_Enter_password])
+    Re_Enter_password=forms.CharField(widget=forms.PasswordInput)
+        
+    def clean_Re_Enter_password(self):
+        pwd = self.cleaned_data['Re_Enter_password']
+        if len(pwd) < 4:
+            raise forms.ValidationError('password min 4 char')
+        if len(pwd) > 15:
+            raise forms.ValidationError('password max 15 char')
+        if len(re.findall('[0-9]', pwd)) == 0:
+            raise  forms.ValidationError('altest 1 Numeric')
+        if len(re.findall('[^0-9a-zA-Z]', pwd)) == 0:
+            raise  forms.ValidationError('altest 1 Special char')
+        if len(re.findall('[a-z]', pwd)) == 0:
+            raise  forms.ValidationError('altest 1 lower case')
+        if len(re.findall('[A-Z]', pwd)) == 0:
+            raise  forms.ValidationError('altest 1 upper case')
+        return pwd
+
+        
