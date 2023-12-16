@@ -19,6 +19,12 @@
     </table>
     <input type="submit" value="Register">
     </form>
-    <a href="{% url 'owner_app:owner_login' pk=user.id%}"><button>Login_page</button></a>
+    <div>
+    {% block 'center' %}
+    {% if user.id %}
+    <a href="{% url 'owner_app:owner_login_view' pk=user.id %}"><button>Login_page</button></a>
+    {% endif %}
+    {% endblock %}
+</div>
 </body>
 </html>
