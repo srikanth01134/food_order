@@ -14,10 +14,11 @@ from owner_app.models import owner_model
 
 
 
-
+pk=None
 
 #password and mail sending to
 def owner_register_view(request):
+    global pk
     pk=request.user.pk
     form = owner_form()
     if request.method == 'POST' and request.FILES:
@@ -48,21 +49,25 @@ def owner_register_view(request):
 #change password views
 
 def owner_login_view(request,pk):
-    res=owner_model.objects.get(id=pk)
-    form=login_form(instance=res)
+    form=login_form()
     if request.method=="POST":
-        form =login_form(request.POST,instance=res)
+        form =login_form(request.POST)
         if form.is_valid():
-            user = authenticate(username = form.cleaned_data['username'],password = form.cleaned_data['password'])
+            print(form)
+            username=form.cleaned_data['username']
+            password=form.cleaned_data['password']
+            authenticate(username = username,password = password)
+            user=owner_model.objects.get(id=pk)
             print(user)
             if user:
                 return redirect(f'/owner_app/change_pass_view/{pk}/')
             else:
-                messages.success(request,'you enter the wrong password or username')
+                messages.error(request,'you enter the wrong password or username')
     return render(request,'owner_login.html',context={'form':form})
             
 otp_confirm=None
 def change_pass_view(request,pk):
+    global otp_confirm
     form=change_password_form()
     if request.method=='POST':
         res =owner_model.objects.get(id=pk)
@@ -70,12 +75,12 @@ def change_pass_view(request,pk):
         if form.is_valid():
             if form.cleaned_data['Enter_password']==form.cleaned_data['Re_Enter_password']:
                 owner_model.objects.filter(id=pk).update(password=make_password(form.cleaned_data['Enter_password']))
-                user=request.user
-                if user:
-                    if user.is_staff:
+                if res:
+                    print(res)
+                    if res.is_staff:
                         otp = random.randint(0000,9999)
                         otp_confirm = otp
-                        email = user.email
+                        email = res.email
                         subject = "Welcome to Hotel management"
                         msg =f'''Dear {request.user},
                                 Congratulation! 
@@ -83,16 +88,20 @@ def change_pass_view(request,pk):
                                 OTP CONFIRM : {otp}
                                                 '''
                     send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-                    login(request, user)  
-                return redirect(f'/owner_app/otp_view/{pk}/')
+                    login(request, res)  
+                    return redirect(f'/owner_app/otp_view/{pk}/')
     return render(request=request,template_name='change_password.html',context={'form':form})
 
 
 def otp_view(request,pk):
+    form=login_form()
     if request.method == 'POST':
         if str(otp_confirm) == str(request.POST['otp_confirm']):
             messages.success(request,'Password change is success')
             return redirect(f'/owner_app/owner_login_view/{pk}/')
+        res=owner_model.objects.all()
+        if res['password'] == form.cleaned_data['Enter_password']:
+            return redirect('owner_app/sample_home_view/')
         else:
             logout(request)
             messages.success(request,"otp entered is incorrect")
@@ -102,6 +111,10 @@ def otp_view(request,pk):
 
 
 def sample_home_view(request):
-    return render(request,'sample.html')
+    form=login_form()
+    res=owner_model.objects.filter(password='password')
+    if res==form.cleaned_data['Enter_password']:
+        return redirect('/owner_app/sample_home_view/')
+    return render(request,'sample.html',context={'form':form})
 
     

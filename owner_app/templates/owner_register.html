@@ -20,11 +20,9 @@
     <input type="submit" value="Register">
     </form>
     <div>
-    {% block 'center' %}
-    {% if user.id %}
-    <a href="{% url 'owner_app:owner_login_view' pk=user.id %}"><button>Login_page</button></a>
-    {% endif %}
-    {% endblock %}
+  
+    <a href="{% url 'owner_app:owner_login_view' pk=id %}"><button>Login_page</button></a>
+  
 </div>
 </body>
 </html>
