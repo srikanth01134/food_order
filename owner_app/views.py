@@ -53,12 +53,13 @@ def owner_login_view(request,pk):
     if request.method=="POST":
         form =login_form(request.POST)
         if form.is_valid():
-            print(form)
-            username=form.cleaned_data['username']
-            password=form.cleaned_data['password']
-            authenticate(username = username,password = password)
             user=owner_model.objects.get(id=pk)
             print(user)
+            username=form.cleaned_data['username']
+            password=form.cleaned_data['password']
+            print(username)
+            print(password)
+            user=authenticate(username = username,password = password)
             if user:
                 return redirect(f'/owner_app/change_pass_view/{pk}/')
             else:
@@ -99,9 +100,6 @@ def otp_view(request,pk):
         if str(otp_confirm) == str(request.POST['otp_confirm']):
             messages.success(request,'Password change is success')
             return redirect(f'/owner_app/owner_login_view/{pk}/')
-        res=owner_model.objects.all()
-        if res['password'] == form.cleaned_data['Enter_password']:
-            return redirect('owner_app/sample_home_view/')
         else:
             logout(request)
             messages.success(request,"otp entered is incorrect")
@@ -111,10 +109,6 @@ def otp_view(request,pk):
 
 
 def sample_home_view(request):
-    form=login_form()
-    res=owner_model.objects.filter(password='password')
-    if res==form.cleaned_data['Enter_password']:
-        return redirect('/owner_app/sample_home_view/')
-    return render(request,'sample.html',context={'form':form})
+    return render(request,'sample.html')
 
     

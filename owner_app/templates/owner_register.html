@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>owner_register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/owner_register.css'%}">
 </head>
 <body>
     {%if messages %}
@@ -11,17 +13,19 @@
     <h5>{{i}}</h5>
     {% endfor %}
     {% endif %}
-
+<fieldset>
+    <legend><h3><em>welcome to your store</em></h3></legend>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
     <table>
+        <aside><div style="height: 150px;width: 300px;text-align: center;"><h2>Your business is our responsibility</h2></div></aside>
         {{form}}
     </table>
     <input type="submit" value="Register">
     </form>
+</fieldset>
     <div>
-  
-    <a href="{% url 'owner_app:owner_login_view' pk=id %}"><button>Login_page</button></a>
+
   
 </div>
 </body>
