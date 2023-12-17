@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIRS=os.path.join(BASE_DIR,'templates')
-PROAPP18_STATIC_DIRS=os.path.join(os.path.join(BASE_DIR,'proapp18','owner_app'),'static')
+PROAPP18_STATIC_DIRS=os.path.join(os.path.join(BASE_DIR,'proapp18'),'static')
 OWNER_APP_STATIC_DIRS=os.path.join(os.path.join(BASE_DIR,'owner_app'),'static')
 
 STATIC_DIRS=os.path.join(BASE_DIR,'static')
