@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from pro18.views import main_view
+# from pro18.views import main_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('proapp18/',view=include('proapp18.urls'),name='proapp18'),
