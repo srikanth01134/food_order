@@ -103,7 +103,7 @@ def otp_view(request,pk):
         else:
             logout(request)
             messages.success(request,"otp entered is incorrect")
-            return redirect(f'/owner_app/owner_login_view/{pk}/')
+            return redirect(f'/owner_app/sub_login_view/{pk}/')
     return render(request=request, template_name='owner_otp.html')
 
 
@@ -111,4 +111,21 @@ def otp_view(request,pk):
 def sample_home_view(request):
     return render(request,'sample.html')
 
-    
+
+
+def sub_login_view(request,pk):
+    form=login_form()
+    if request.method=="POST":
+        form =login_form(request.POST)
+        if form.is_valid():
+            print(user)
+            username=form.cleaned_data['username']
+            password=form.cleaned_data['password']
+            print(username)
+            print(password)
+            user=authenticate(username = username,password = password)
+            if user:
+                return redirect(f'/owner_app/sample_home_view/{pk}')
+            else:
+                messages.error(request,'you enter the wrong password or username')
+    return render(request,'sub_login.html',context={'form':form})
