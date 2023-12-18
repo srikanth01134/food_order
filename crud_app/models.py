@@ -1,15 +1,16 @@
 from django.db import models
-from proapp18.models import hotel_register
 class category_model(models.Model):
     category_id=models.AutoField(primary_key=True)
+    hotel_id=models.IntegerField()
     category_name=models.CharField(max_length=30)
     category_desc=models.TextField()
+    category_image=models.ImageField()
     def __str__(self):
         return self.category_name
     
 class food_model(models.Model):
-    hotel_id=models.ForeignKey(hotel_register,on_delete=models.CASCADE)
     category_id=models.ForeignKey(category_model,on_delete=models.CASCADE)
+    hotel_id=models.IntegerField()
     item_id=models.AutoField(primary_key=True)
     item_name=models.CharField(max_length=30)
     item_price=models.FloatField()

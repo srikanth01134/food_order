@@ -4,21 +4,25 @@ from crud_app.forms import category_form,item_form
 # Create your views here.
 def catagory_view(request):
     form=category_form()
-    if request.method=='POST':
-        form=category_form(request.POST)
+    if request.method=='POST' and request.FILES:
+        form=category_form(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('crud_app/display')
+            data=form.save(commit=False)
+            data.hotel_id=request.user.id
+            if data:
+                data.save()
+                return redirect('/crud_app/display')
     return render(request,'category.html',context={'form':form})
 
 def display(request):
-    res=category_model.objects.all()
+    res=category_model.objects.filter(hotel_id=request.user.id)
     return render(request,'display.html',context={'form':res})
 
 def updates(request,pk):
-    form=category_form(instance=category_model.objects.get(category_id=pk))
-    if request.method=='POST':
-        form=category_form(request.POST,instance=category_model.objects.get(category_id=pk))
+    res=category_model.objects.get(category_id=pk)
+    form=category_form(instance=res)
+    if request.method=='POST' and request.FILES:
+        form=category_form(request.POST,request.FILES,instance=res)
         if form.is_valid():
             form.save()
         return redirect('/crud_app/display')
@@ -34,11 +38,12 @@ def deletes(request,pk):
 
 #items for  category
 def items_view(request):
-    form=item_form()
+    form=item_form(hotel=request.user.id)
     if request.method=='POST' and request.FILES:
-        form=item_form(request.POST,request.FILES)
+        form=item_form(request.POST,request.FILES,hotel=request.user.id)
         if form.is_valid():
-            form.save()
+            data=form.save(commit=False)
+            data.hotel_id
             return redirect('/crud_app/items_list')
     return render(request,'items.html',context={'form':form})
 

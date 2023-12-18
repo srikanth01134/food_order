@@ -10,6 +10,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 import random
 from owner_app.models import owner_model
+from crud_app.models import category_model
 # Create your views here.
 
 
@@ -44,24 +45,21 @@ def owner_register_view(request):
                         Please Login from website and Change the password.
                         '''
                 send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-            return redirect(f'/owner_app/owner_login_view/{pk}/')
+            return redirect(f'/owner_app/sub_login_view/{pk}/')
     return render(request=request,template_name='owner_register.html',context={'form':form})
 #change password views
 
-def owner_login_view(request,pk):
+def owner_login_view(request):
     form=login_form()
     if request.method=="POST":
         form =login_form(request.POST)
         if form.is_valid():
-            user=owner_model.objects.get(id=pk)
-            print(user)
             username=form.cleaned_data['username']
             password=form.cleaned_data['password']
-            print(username)
-            print(password)
             user=authenticate(username = username,password = password)
             if user:
-                return redirect(f'/owner_app/change_pass_view/{pk}/')
+                login(request,user)
+                return redirect(f'/owner_app/sample_home_view/')
             else:
                 messages.error(request,'you enter the wrong password or username')
     return render(request,'owner_login.html',context={'form':form})
@@ -95,29 +93,31 @@ def change_pass_view(request,pk):
 
 
 def otp_view(request,pk):
-    form=login_form()
     if request.method == 'POST':
         if str(otp_confirm) == str(request.POST['otp_confirm']):
             messages.success(request,'Password change is success')
-            return redirect(f'/owner_app/owner_login_view/{pk}/')
+            return redirect(f'/owner_app/sample_home_view/{pk}/')
         else:
             logout(request)
             messages.success(request,"otp entered is incorrect")
             return redirect(f'/owner_app/sub_login_view/{pk}/')
     return render(request=request, template_name='owner_otp.html')
 
-
-
+ 
+ 
 def sample_home_view(request):
-    return render(request,'sample.html')
+    res=category_model.objects.all()
+    print(request.user.id)
+    return render(request,'sample.html',context={'res':res})
 
 
 
-def sub_login_view(request,pk):
+def sub_login_view(request):
     form=login_form()
     if request.method=="POST":
         form =login_form(request.POST)
         if form.is_valid():
+            user=owner_model.objects.get(id=pk)
             print(user)
             username=form.cleaned_data['username']
             password=form.cleaned_data['password']
@@ -125,7 +125,12 @@ def sub_login_view(request,pk):
             print(password)
             user=authenticate(username = username,password = password)
             if user:
-                return redirect(f'/owner_app/sample_home_view/{pk}')
+                login(request,user)
+                return redirect(f'/owner_app/change_pass_view/{pk}')
             else:
                 messages.error(request,'you enter the wrong password or username')
     return render(request,'sub_login.html',context={'form':form})
+@login_required(login_url='/owner_app/sub_login_view/')
+def logout_view(request):
+    logout(request)
+    return redirect('/owner_app/sub_login_view/')

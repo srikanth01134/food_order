@@ -18,6 +18,7 @@
             <th>category_id</th>
             <th>category_name</th>
             <th>category_desc</th>
+            <th>category_image</th>
             <th>update</th>
             <th>Delete</th>
         </tr>
@@ -26,6 +27,7 @@
            <td>{{i.category_id}}</td>
           <td>{{i.category_name}}</td>
             <td>{{i.category_desc}}</td>
+            <td><img src="{{i.category_image.url}}" alt="...." height="150" width="150"></td>
             <td><a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a></td>
             <td><a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>delete</button></a></td>
              
