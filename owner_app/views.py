@@ -10,13 +10,13 @@ from django.http import HttpResponse
 from django.contrib import messages
 import random
 from owner_app.models import owner_model
-from crud_app.models import category_model
+from crud_app.models import category_model,food_model
+# from crud_app.views import details_view
 # Create your views here.
 
 
 
 pk=None
-
 #password and mail sending to
 def owner_register_view(request):
     global pk
@@ -45,7 +45,7 @@ def owner_register_view(request):
                         Please Login from website and Change the password.
                         '''
                 send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-            return redirect(f'/owner_app/sub_login_view/{pk}/')
+            return redirect('/owner_app/owner_login_view/')
     return render(request=request,template_name='owner_register.html',context={'form':form})
 #change password views
 
@@ -75,7 +75,6 @@ def change_pass_view(request,pk):
             if form.cleaned_data['Enter_password']==form.cleaned_data['Re_Enter_password']:
                 owner_model.objects.filter(id=pk).update(password=make_password(form.cleaned_data['Enter_password']))
                 if res:
-                    print(res)
                     if res.is_staff:
                         otp = random.randint(0000,9999)
                         otp_confirm = otp
@@ -88,7 +87,7 @@ def change_pass_view(request,pk):
                                                 '''
                     send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
                     login(request, res)  
-                    return redirect(f'/owner_app/otp_view/{pk}/')
+                    return redirect(f'/owner_app/otp_view/{pk}')
     return render(request=request,template_name='change_password.html',context={'form':form})
 
 
@@ -96,28 +95,24 @@ def otp_view(request,pk):
     if request.method == 'POST':
         if str(otp_confirm) == str(request.POST['otp_confirm']):
             messages.success(request,'Password change is success')
-            return redirect(f'/owner_app/sample_home_view/{pk}/')
+            return redirect(f'/owner_app/owner_login_view/')
         else:
             logout(request)
             messages.success(request,"otp entered is incorrect")
-            return redirect(f'/owner_app/sub_login_view/{pk}/')
+            return redirect(f'/owner_app/sub_login_view/')
     return render(request=request, template_name='owner_otp.html')
 
- 
- 
+@login_required(login_url='owner_app/owner_login/')
 def sample_home_view(request):
-    res=category_model.objects.all()
-    print(request.user.id)
+    res=category_model.objects.filter(hotel_id=request.user.id)
     return render(request,'sample.html',context={'res':res})
-
-
 
 def sub_login_view(request):
     form=login_form()
     if request.method=="POST":
         form =login_form(request.POST)
         if form.is_valid():
-            user=owner_model.objects.get(id=pk)
+            user=owner_model.objects.filter(id=pk)
             print(user)
             username=form.cleaned_data['username']
             password=form.cleaned_data['password']
@@ -126,11 +121,18 @@ def sub_login_view(request):
             user=authenticate(username = username,password = password)
             if user:
                 login(request,user)
-                return redirect(f'/owner_app/change_pass_view/{pk}')
+                return redirect(f'/owner_app/change_pass_view/{pk}/')
             else:
                 messages.error(request,'you enter the wrong password or username')
     return render(request,'sub_login.html',context={'form':form})
-@login_required(login_url='/owner_app/sub_login_view/')
+
+
+
+@login_required(login_url='/owner_app/owner_login_view/')
 def logout_view(request):
     logout(request)
-    return redirect('/owner_app/sub_login_view/')
+    return redirect('/owner_app/owner_login_view/')
+
+def items_display_view(request,pk):
+    res=food_model.objects.filter(category_id=pk)
+    return render(request=request,template_name='items_display.html',context={'res':res})

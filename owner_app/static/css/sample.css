@@ -8,13 +8,17 @@ ul{
 }
 #c-display{
     display: flex;
+    flex-wrap: wrap;
     border: 1px solid green;
-    height: 100vh;
     justify-content: space-between;
 }
 
-#main{
-    border: 2px solid red;
-    height: 50%;
-    width: 25%;
+#main{ 
+    height: 400px;
+    width: 400px;
+    border: 1px solid;
+}
+*{
+    margin: 0%;
+    padding: 0%;
 }

@@ -7,12 +7,13 @@
     <title>create_page</title>
 </head>
 <body>
+    {% include 'partials/_messages.html' %}
+    
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="Add" id="">
     </form>
-    <a href="{% url 'proapp18:hotel_register'%}"><button>Hotel_Register</button></a>
     <a href="{% url 'crud_app:display'%}"><button>Category_display</button></a>
     <a href="{% url 'crud_app:items'%}"><button>Items_create</button></a>
 </body>

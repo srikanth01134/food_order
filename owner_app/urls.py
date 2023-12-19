@@ -1,5 +1,5 @@
 from django.urls import path
-from owner_app.views import owner_register_view,otp_view,change_pass_view,sample_home_view,owner_login_view,sub_login_view,logout_view
+from owner_app.views import owner_register_view,otp_view,change_pass_view,sample_home_view,owner_login_view,sub_login_view,logout_view,items_display_view
 app_name='owner_app'
 
 urlpatterns=[
@@ -9,5 +9,8 @@ urlpatterns=[
     path(route='sample_home_view/',view=sample_home_view,name='sample_home_view'),
     path(route='owner_login_view/',view=owner_login_view,name='owner_login_view'),
     path(route='sub_login_view/',view=sub_login_view,name='sub_login_view'),
-    path(route='logout/',view=logout_view,name='logout')
+    path(route='logout/',view=logout_view,name='logout'),
+    path(route='items_display_view/<int:pk>/',view=items_display_view,name='items_display_view'),
+
+
 ]

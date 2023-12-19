@@ -11,30 +11,33 @@
     <header id="" class="">
         <nav  class="" id="">
             <ul id="ul-owner">
-            <a href="{% url 'crud_app:catagory'%}"><li>Category_create</li></a>
-            <a href="{% url 'crud_app:items' %}"><li>Items_change</li></a>
-            <a href=""><li>AboutUs</li></a>
-        </ul>
+                <li><a href="{% url 'crud_app:catagory'%}">Category_create</a></li>
+                <li><a href="{% url 'crud_app:items' %}">Items_create</a></li>
+                <li><a href="#"><li>AboutUs</a></li>
+                <li><a href="{% url 'owner_app:logout'%}">logout</a></li>
+
+            </ul>
         </nav>
     </header>
-<div id="c-display">
+
         {% if res %}
-        
+    <div id="c-display">
             {% for i in res %}
-            <div id="main">
-                <h1>category name</h1>
-                <h4>{{i.category_name}}</h4>
-                <div><img src="{{i.category_image.url }}" alt="sorry" height="100px" width="100px"></div>
+    
+        <div id="main">
+            <h1>category name</h1>
+            <h4>{{i.category_name}}</h4>
+            <a href="{% url 'owner_app:items_display_view' pk=i.category_id %}"><img src="{{i.category_image.url }}" alt="sorry" height="100px" width="100px"></a>
             <p>category description</p>
             <a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a>
             <a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>Delete</button></a>
-            <a href=""><button>Items</button></a>
+            <a href="{% url 'crud_app:items' %}"><button>Items_create</button></a>
         </div>
+   
             {% endfor %}
-      
+    </div> 
         {% endif%}
         
-</div>
-<a href="{% url 'owner_app:logout'%}"><button>logout</button></a>
+
 </body>
 </html>

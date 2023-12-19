@@ -6,7 +6,7 @@
     , initial-scale=1.0">
     <title>update_page</title>
 </head>
-<body>
+<body> {% include 'partials/_messages.html' %}
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}

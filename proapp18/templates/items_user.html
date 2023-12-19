@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>items_user</title>
+</head>
+<body>
+    <div id="item-div">
+        {% if data %}
+        <div>
+            {% for i in data %}
+            <h4>{{i.item_name}}</h4>
+            <img src="{{i.item_image.url}}" height="150px" width="150px">
+            <h4>{{i.item_price}}</h4>
+            <h4>{{i.item_name}}</h4>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

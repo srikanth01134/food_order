@@ -9,5 +9,5 @@ class cat_admin(admin.ModelAdmin):
 admin.site.register(category_model,cat_admin)
 
 class p_admin(admin.ModelAdmin):
-    list_display =['item_name','item_price','item_quantity','item_desc','category_id_id']
+    list_display =['item_name','item_price','item_desc','category_id_id']
 admin.site.register(food_model,p_admin)

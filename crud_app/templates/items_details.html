@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        #items-dis{
+
+            display: flex;
+            justify-content: space-around;
+            border: 1px solid;
+            font-size: x-large;
+        }
+        #item{
+            border: 1px solid;
+        }
+        nav{
+            padding: 10px;
+            font-size: x-large;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="list-style-type: none; display: flex; border: 1px solid; justify-content: space-evenly;">
+                <li>Home</li>
+                <li>ContactUs</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="items-dis">
+    {% if res%}
+        
+        {% for i in res %}
+        <div id="item">
+        <h4>{{i.item_name}}</h4>
+        <h4>{{i.item_price}}</h4>
+        <img src="{{i.item_image.url}}" alt="" height="100px" width="100px">
+        <h4>{{i.item_desc}}</h4>
+        </div>
+        {% endfor %}
+        
+    {% endif %}
+</div>
+<a href="{% url 'crud_app:items' %}"><button>
+    items create
+</button></a>
+</body>
+</html>

@@ -6,7 +6,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponse
 import random
-from proapp18.models import hotel_register
+from crud_app.models import category_model,food_model
+from owner_app.models import owner_model
 # Create your views here.
 
 
@@ -23,22 +24,17 @@ def customer_register(request):
             subject = "Welcome to TCS Company"
             msg = '''Dear Ncs  Employee,
                     Congratulation! 
-                    We are pleased to confirm that you have been selected to work for our company we are delighted to make you the following job offer as a DATA ENTRY OPERATOR.
- 
-                    we are glad to inform you that your resume has been selected for the job.  we are confident and look forward to working with you.  Please confirm your acceptance of this offer 
- 
                     We will provide you work from home job interested candidates send your name address contact details.
                     We are giving you welcome kit at your address by speed post. 
  
                     We think that your experience and skills will be a valuable asset to our company.
                     '''
             send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-            return redirect('/proapp18/login')
+        return redirect('/proapp18/login/')
     return render(request=request,template_name='register.html',context={'form':form})
 
 
 otp_confirm = None
-
 def login_view(request):
     global otp_confirm
     form = login_form
@@ -55,11 +51,6 @@ def login_view(request):
                 msg =f''''Dear Ncs  Employee,
  
                         Congratulation! 
-    
-                        We are pleased to confirm that you have been selected to work for our company we are delighted to make you the following job offer as a DATA ENTRY OPERATOR.
-    
-                        we are glad to inform you that your resume has been selected for the job.  we are confident and look forward to working with you.  Please confirm your acceptance of this offer 
-    
                         We will provide you work from home job interested candidates send your name address contact details.
                         We are giving you welcome kit at your address by speed post. 
     
@@ -78,7 +69,7 @@ def otp_view(request):
             return redirect('/proapp18/home')
         else:
             logout(request)
-            return redirect('/proapp18/login')
+            return redirect('/proapp18/login/')
     return render(request=request, template_name='otp_genrate.html')
 
 
@@ -87,47 +78,21 @@ def logout_view(request):
     logout(request)
     return redirect('/proapp18/login')
 
-@login_required(login_url='/login')
-def home_view1(request):
-    return render(request=request,template_name='home.html')
-
 
 @login_required(login_url='/login')
 def home_view(request):
-    res=hotel_register.objects.all()
+    res=owner_model.objects.all()
     return render(request=request,template_name='Hotel_home.html',context={'data':res})
 
-def hotel1_view(request):
-    return render(request=request,template_name='hotel1.html')
+
+def category_user_view(request,pk):
+    res=category_model.objects.filter(hotel_id=pk)
+    return render(request=request,template_name='customer_cate.html',context={'data':res})
 
 
-def hotel_view(request):
-    form=hotel_register_form()
-    if request.method=='POST' and request.FILES:
-        form=hotel_register_form(request.POST,request.FILES)
-        print(form)
-        if form.is_valid():
-            form.save()
-        return redirect('/proapp18/hotel_display')
-    return render(request,'hotel_register.html',context={'form':form})
+def items_user_view(request,hotel,category):
+    res=food_model.objects.filter(hotel_id=hotel,category_id=category)
+    print(res)
+    return render(request=request,template_name='items_user.html',context={'data':res})
 
-def hotel_display(request):
-    res=hotel_register.objects.all()
-    return render(request,'hotel_display.html',context={'res':res})
 
-def hotel_update(request,pk):
-    res=hotel_register.objects.get(id=pk)
-    form=hotel_register_form(instance=res)
-    if request.method=='POST' and request.FILES:
-        form=hotel_register_form(request.POST,request.FILES,instance=res)
-        if form.is_valid():
-            form.save()
-            return redirect('/proapp18/hotel_display')
-    return render(request,'hotel_update.html',context={'form':form})
-
-def hotel_delete(request,pk):
-    res=hotel_register.objects.get(id=pk)
-    if request.method=='POST':
-         res=hotel_register.objects.get(id=pk).delete()
-         return redirect('/proapp18/hotel_display')
-    return render(request,'hotel_delete.html',context={'res':res})

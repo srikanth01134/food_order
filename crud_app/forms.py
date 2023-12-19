@@ -12,7 +12,7 @@ class category_form(forms.ModelForm):
 class item_form(forms.ModelForm):
     class Meta:
         model=food_model
-        exclude=['hotel_id']
+        exclude=['hotel_id','item_quantity']
 
 
     def __init__(self,*args,**kwargs):
@@ -20,8 +20,10 @@ class item_form(forms.ModelForm):
         super(item_form,self).__init__(*args,**kwargs)
         self.fields['category_id']=forms.ModelChoiceField(queryset=category_model.objects.filter(hotel_id=hotel))
 
-
-    
+class items_update_form(forms.ModelForm):
+    class Meta:
+        model=food_model
+        exclude=['category_id','hotel_id','item_quantity']   
 
 
     

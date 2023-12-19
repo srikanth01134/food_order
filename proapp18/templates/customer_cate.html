@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>category_for_user</title>
+</head>
+<body>
+    <div>
+    {% if data %}
+    <div id="">
+        {% for i in data %}
+            <h1>{{i.category_name}}</h1>
+            <a href="{% url 'proapp18:items_user' hotel=i.hotel_id  category=i.category_id %}"><h1><img src="{{i.category_image.url}}" alt="" height="150px" width="150px"></h1></a>
+            <h1>{{i.category_desc}}</h1>
+        {% endfor %}</div>
+    {% endif %}
+</div>
+</body>
+</html>

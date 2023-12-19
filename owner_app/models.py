@@ -6,7 +6,6 @@ class owner_model(User):
     phone = models.PositiveBigIntegerField(unique=True)
     dob = models.DateField(auto_now=False,auto_now_add=False)
     gender = models.CharField(max_length=10,choices=[['Male','Male'],['Female','Female']])
-    hotel_id=models.AutoField(primary_key=True)
     restarunt_name=models.CharField(max_length=50)
     restarunt_address=models.CharField(max_length=200)
     restarunt_email=models.EmailField(unique=True)

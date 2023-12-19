@@ -1,5 +1,5 @@
 from django.urls import path
-from proapp18.views import customer_register,login_view,home_view,logout_view,otp_view,start_view,hotel1_view,hotel_view,hotel_display,hotel_update,hotel_delete
+from proapp18.views import customer_register,login_view,home_view,logout_view,otp_view,start_view,home_view,category_user_view,items_user_view
 app_name = 'proapp18'
 
 urlpatterns = [
@@ -9,9 +9,8 @@ urlpatterns = [
     path(route='otp/',view=otp_view,name='otp'),
     path(route='home/',view=home_view, name='home'),
     path(route='logout/',view=logout_view,name='logout'),
-    path(route='hotel1/',view=hotel1_view,name='hotel'),
-    path(route='hotel_register/',view=hotel_view,name='hotel_register'),
-    path(route='hotel_display/',view=hotel_display,name='hotel_display'),
-    path(route='hotel_update/<int:pk>/',view=hotel_update,name='hotel_update'),
-    path(route='hotel_delete/<int:pk>/',view=hotel_delete,name='hotel_delete'),
+    path(route='hotel1/',view=home_view,name='hotel'),
+    path(route='category_user/<int:pk>/',view=category_user_view,name='category_user'),
+    path(route='items_user/<int:hotel>/<int:category>/',view=items_user_view,name='items_user'),
+  
 ]
