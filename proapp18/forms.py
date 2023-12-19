@@ -69,6 +69,7 @@ class customer_form(forms.ModelForm):
         if self.cleaned_data['password'] == self.cleaned_data['repassword']:
             user.password = make_password(self.cleaned_data['password'])
             if commit:
+                print(user)
                 user.save()
             return user
 

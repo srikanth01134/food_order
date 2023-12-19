@@ -39,8 +39,6 @@
             <td><img src="{{i.item_image.url}}" alt="...." height="50" width="50"></td>
              <td><a href="{% url 'crud_app:item_update' pk=i.item_id %}"><button>update</button></a></td>
             <td><a href="{% url 'crud_app:item_delete' pk=i.item_id %}"><button>delete</button></a></td> 
-            <td><a href="{% url 'cart_app:cart_register' your_item_id=i.item_id your_item_name=i.item_name price=i.item_price customer_id=user.id quantity=i.item_quantity %}  "><button>add_to_cart</button></a></td> 
-            
         </tr>
         {% endfor %}
     </table>

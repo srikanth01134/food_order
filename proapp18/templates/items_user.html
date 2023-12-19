@@ -14,6 +14,7 @@
             <img src="{{i.item_image.url}}" height="150px" width="150px">
             <h4>{{i.item_price}}</h4>
             <h4>{{i.item_name}}</h4>
+            <a href="{% url 'cart_app:cart_register' your_item_id=i.item_id your_item_name=i.item_name price=i.item_price customer_id=user.id quantity=i.item_quantity %}  "><button>add_to_cart</button></a>
             {% endfor %}
         </div>
         {% endif %}

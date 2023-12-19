@@ -10,13 +10,14 @@
 <body>
     <div id="start-div1"  class="">
     <h1>Welcome to Tindam Tirugudam</h1>
+    <li><a href="{% url 'owner_app:owner_register' %}">Add Restaurnt</a></li>
 </header>
 <br>
 <main>
 <h3>First, we eat. Then, we do everything else.</h3>
-    <a href="{% url 'proapp18:register'%}"><button>Register</button></a>
-    <p></p>
     <div id="main-img"><img id="img-1" src="{% static 'images/start.jpeg'%}" alt=""></div>
+    <h1>New user Register</h1>
+    <a href="{% url 'proapp18:register'%}"><button>Register</button></a>
 </main>
 <h2>You are  already register go and login!!!</h2>
     <a href="{% url 'proapp18:login'%}"><button>Login</button></a>

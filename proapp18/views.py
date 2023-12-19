@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from proapp18.forms import customer_form,login_form,hotel_register_form
+from proapp18.forms import customer_form,login_form
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail 
@@ -12,7 +12,7 @@ from owner_app.models import owner_model
 
 
 def start_view(request):
-    return render(request,'start.html')
+    return render(request,'index.html')
 
 def customer_register(request):
     form = customer_form()
@@ -37,18 +37,20 @@ def customer_register(request):
 otp_confirm = None
 def login_view(request):
     global otp_confirm
-    form = login_form
+    form = login_form()
     if request.method == 'POST':
         form = login_form(request.POST)
         if form.is_valid():
             user = authenticate(username = form.cleaned_data['username'],password = form.cleaned_data['password'])
+            print(user)
             if user:
+                print(user)
                 login(request, user)
                 otp = random.randint(0000,9999)
                 otp_confirm = otp
                 email = user.email
                 subject = "Welcome to TCS Company"
-                msg =f''''Dear Ncs  Employee,
+                msg =f'''Dear Ncs  Employee,
  
                         Congratulation! 
                         We will provide you work from home job interested candidates send your name address contact details.
@@ -59,7 +61,7 @@ def login_view(request):
                         OTP CONFIRM : {otp}
                         '''
                 send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
-            return redirect('/proapp18/otp')
+        return redirect('/proapp18/otp/')
     return render(request=request,template_name='login.html',context={'form':form})
 
 
