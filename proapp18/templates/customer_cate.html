@@ -4,17 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>category_for_user</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+            font-size: medium;
+        }
+        #cust-items{
+            border: 1px solid;
+            margin: 2px ;
+            width: 30%;
+        }
+        #cust-items1{
+            display:flex;
+        }
+        
+    </style>
 </head>
 <body>
-    <div>
+<div id="cust-items1">
     {% if data %}
-    <div id="">
+    
         {% for i in data %}
+        <div id="cust-items">
             <h1>{{i.category_name}}</h1>
             <a href="{% url 'proapp18:items_user' hotel=i.hotel_id  category=i.category_id %}"><h1><img src="{{i.category_image.url}}" alt="" height="150px" width="150px"></h1></a>
             <h1>{{i.category_desc}}</h1>
-        {% endfor %}</div>
+        </div>
+        {% endfor %}
+    
     {% endif %}
+    <a href="{% url 'cart_app:cart_list' pk=hotel_id %}"><button>Cart</button></a>
 </div>
+<a href="{% url 'proapp18:home'%}"><button>Hotel home</button></a>
 </body>
 </html>

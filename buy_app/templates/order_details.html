@@ -11,8 +11,9 @@
         <tr>
             <th>order_id</th>
             <th>order_date</th>
-            <th>customer_name</th>
-            <th>customer_phone</th>
+            <th>Name</th>
+            <th>phoneNo</th>
+            <th>Address</th>
             <th>Total_price</th>
             <th>Items </th>
         </tr>
@@ -22,6 +23,7 @@
             <td>{{i.order_date}}</td>
             <td>{{i.customer_name}}</td>
             <td>{{i.customer_phoneno}}</td>
+            <td>{{i.customer_address}}</td>
             <td>{{i.total_price}}</td>
             <td>
                 <table border="2">
@@ -46,7 +48,6 @@
     </table>
     {% else %}
     <h1> No orders </h1>
-    <a href="{% url 'crud_app:items_list' %}"> <button>Item Display</button></a>
     {% endif %}
     
 </body>

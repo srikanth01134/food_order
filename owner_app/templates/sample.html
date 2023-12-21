@@ -25,10 +25,9 @@
             {% for i in res %}
     
         <div id="main">
-            <h1>category name</h1>
             <h4>{{i.category_name}}</h4>
             <a href="{% url 'owner_app:items_display_view' pk=i.category_id %}"><img src="{{i.category_image.url }}" alt="sorry" height="100px" width="100px"></a>
-            <p>category description</p>
+            <h4>{{i.category_desc}}</h4>
             <a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a>
             <a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>Delete</button></a>
             <a href="{% url 'crud_app:items' %}"><button>Items_create</button></a>
@@ -38,6 +37,8 @@
     </div> 
         {% endif%}
         
-
+        <a href="{% url 'owner_app:sample_home_view' %}"><button>
+            Home
+        </button></a>
 </body>
 </html>

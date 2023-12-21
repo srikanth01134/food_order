@@ -16,17 +16,47 @@
         border: 1px solid;
         padding: 10px;
 
+      }#ul-home{
+        display: flex;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: larger;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 1px solid red;
+        padding: 10px;
+      }
+      a{
+        text-decoration: none;
+        color: black;
+      }
+      #nav-home{
+        padding: 10px;
+      }
+      #h1-home{
+        width: 30%;
+        font-size: large;
+        padding: 0%;
+        margin: 0%;
       }
     </style>
     <title>Home_page</title>
 </head>
 <body>
-{%include 'partials/_header.html'%}
-    
-<div id="div1">    
-   
-    {% if data %}
-    
+  <!-- {% include 'partials/_header.html' %} -->
+  <header>
+    <nav id="nav-home">
+      <ul type="none" id="ul-home"> 
+      <h1 id="h1-home">welcom to Your place</h1>
+      <li><a href="{% url 'proapp18:customer_update' pk=user.id %}">profile</a></li>
+      <li><a href="{% url 'proapp18:logout' %}">logout</a></li>
+      <li><a href="{% url 'buy_app:order_details' %}">Your Orders</a></li>
+    </ul>
+    </nav>
+  </header>
+<h4>{{user}}</h4> 
+<div id="div1">   
+  
+  {% if data %}
     {% for i in data%}
     <div id="div-home">
     <h4>{{i.restarunt_name}}</h4>
@@ -36,12 +66,23 @@
     <h4>{{i.restarunt_email}}</h4>
     <h4>{{i.time}}</h4>
     <h4>{{i.phone}}</h4>
-
     </div>
     {% endfor %}
     {% endif %}
   </div>
-    {% include "partials/_boostjs.html" %}
-      <a href="{% url 'proapp18:logout' %}"><button>logout</button></a>
+  <div>
+    {% if data %}
+        {% for i in data %}
+        <div id="cust-items">
+            <h1>{{i.category_name}}</h1>
+          <img src="{{i.category_image.url}}" alt="" height="150px" width="150px"></a>
+            <h1>{{i.category_desc}}</h1>
+        </div>
+        {% endfor %}
+    
+    {% endif %}
+      </div>
+  </div>
+  {% include 'partials/_footer.html' %}
 </body>
 </html>

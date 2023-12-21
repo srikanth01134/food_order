@@ -1,8 +1,8 @@
 from django import forms 
-from proapp18.models import customer_model,hotel_register
+from proapp18.models import customer_model
 from django.contrib.auth.hashers import make_password
 import re
-
+from proapp18.validators import clean_Enter_password
 
 class customer_form(forms.ModelForm):
     repassword = forms.CharField(widget=forms.PasswordInput)
@@ -68,8 +68,8 @@ class customer_form(forms.ModelForm):
         user = super().save(commit=False)
         if self.cleaned_data['password'] == self.cleaned_data['repassword']:
             user.password = make_password(self.cleaned_data['password'])
+            print('hello')
             if commit:
-                print(user)
                 user.save()
             return user
 
@@ -103,7 +103,28 @@ class login_form(forms.Form):
             raise  forms.ValidationError('altest 1 upper case')
         return pwd
 
-class hotel_register_form(forms.ModelForm):
+class customer_update(forms.ModelForm):
     class Meta:
-        model=hotel_register
-        fields='__all__'
+        model=customer_model
+        fields = ['username','first_name','last_name','email','phone','gender','dob']
+
+
+class customer_change_form(forms.Form):
+    Enter_password=forms.CharField(widget=forms.PasswordInput,validators=[clean_Enter_password])
+    Re_Enter_password=forms.CharField(widget=forms.PasswordInput)
+        
+    def clean_Re_Enter_password(self):
+        pwd = self.cleaned_data['Re_Enter_password']
+        if len(pwd) < 4:
+            raise forms.ValidationError('password min 4 char')
+        if len(pwd) > 15:
+            raise forms.ValidationError('password max 15 char')
+        if len(re.findall('[0-9]', pwd)) == 0:
+            raise  forms.ValidationError('altest 1 Numeric')
+        if len(re.findall('[^0-9a-zA-Z]', pwd)) == 0:
+            raise  forms.ValidationError('altest 1 Special char')
+        if len(re.findall('[a-z]', pwd)) == 0:
+            raise  forms.ValidationError('altest 1 lower case')
+        if len(re.findall('[A-Z]', pwd)) == 0:
+            raise  forms.ValidationError('altest 1 upper case')
+        return pwd

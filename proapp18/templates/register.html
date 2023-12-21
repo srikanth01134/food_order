@@ -25,9 +25,10 @@
                 {% csrf_token %}
                     {{form.as_p}}
                 <input type="submit" value="Register">
-                <h3>Already User ?  <a href="{% url 'proapp18:login' %}"><button>Login</button></a></h3>
             </form>
+                <h3>Already User ?  <a href="{% url 'proapp18:login' %}"><button>Login</button></a></h3>
             
+            <a href="{% url 'proapp18:start' %}"><button>start</button></a>
         </div>
         <aside><img src="{%static '/images/pexels.jpeg'%}" alt="" id="aside-img"></aside>
     </div>

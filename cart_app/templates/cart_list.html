@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load customtags %}
 </head>
 <body>
     <div>
@@ -21,6 +22,8 @@
                 <td>item_id</td>
                 <td>item_name</td>
                 <td>item_price</td>
+                <td>item_quantity</td>
+                <td>total_price</td>
                 <td>Remove</td>
             </tr>
 
@@ -29,23 +32,25 @@
                 <td>{{i.your_item_id}}</td>
                 {% for j in prod_data %}
                     {% if j.item_id == i.your_item_id %}
-                        <td>{{j.item_name}}</td>
-                        <td>{{j.item_price}}</td>
+                        <td>{{i.your_item_name}}</td>
+                        <td>{{i.price}}</td>
+                        <td>{{i.quantity}}</td>
+                        <td>{{i.total_price}}</td>
                     {% endif %} 
                 {% endfor %}
-                <td><a href="{% url 'cart_app:cart_remove' cart_id=i.cart_id %}"><button>Remove</button></a></td>
+                <td><a href="{% url 'cart_app:cart_remove' cart_id=i.cart_id  hotel_id=hotel_id %}"><button>Remove</button></a></td>
+              
             </tr>
             {% endfor %}
         </table>
-        <h1>Total_price: {{total_price.price__sum}}</h1>
+        <h1>Total_price: {{total_price}}</h1>
         </div>
-        <a href="{% url 'crud_app:items_list' %}"><button>items_display</button></a>
-        <a href="{% url 'buy_app:buy_register' total_price=total_price.price__sum %}"><button>Buy now</button></a>
+        <a href="{% url 'buy_app:buy_register' total_price=total_price %}"><button>Buy now</button></a>
         {% else %}
         <h2>cart is empty</h2>
-        <a href="{% url 'crud_app:items_list' %}"> <button>Item Display</button></a>
-        {% endif %}
         
-   
+        {% endif %}
+        <a href="{% url 'proapp18:category_user' pk=hotel_id %}"><button>Click here to add the items</button></a>
+        <a href="{% url 'proapp18:home'%}"><button>Hotel home</button></a>
 </body>
 </html>

@@ -4,20 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>items_user</title>
+    <style>
+         *{
+            margin: 0%;
+            padding: 0%;
+            font-size: medium;
+        }
+        #item-div{
+            border: 1px solid;
+            margin: 2px ;
+        }
+        #cust-items{
+            display:flex;
+        }
+    </style>
 </head>
 <body>
-    <div id="item-div">
+    <div id="cust-items">
         {% if data %}
-        <div>
             {% for i in data %}
+            <div id="item-div">
             <h4>{{i.item_name}}</h4>
             <img src="{{i.item_image.url}}" height="150px" width="150px">
-            <h4>{{i.item_price}}</h4>
-            <h4>{{i.item_name}}</h4>
-            <a href="{% url 'cart_app:cart_register' your_item_id=i.item_id your_item_name=i.item_name price=i.item_price customer_id=user.id quantity=i.item_quantity %}  "><button>add_to_cart</button></a>
-            {% endfor %}
+            <h4>Name:{{i.item_name}}</h4>
+            <h4>Price: {{i.item_price}}</h4>
+            <h4>Hotel id: {{i.hotel_id}}</h4>
+            <form action="{% url 'cart_app:cart_register'%}" method="post">
+                {%csrf_token%}
+                <input type="hidden" name="your_item_id" value="{{i.item_id}}">
+                <input type="hidden" name="your_item_name" value="{{i.item_name}}">
+                <input type="hidden" name="price" value="{{i.item_price}}">
+                <input type="hidden" name="customer_id" value="{{user.id}}">
+                <input type="hidden" name="hotel_id" value="{{i.hotel_id}}">
+                <select name="quantity" id="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input type="submit" value="Add to cart">
+            </form>
         </div>
+            {% endfor %}
+        
         {% endif %}
     </div>
+    <a href="{% url 'proapp18:home'%}"><button>Hotel home</button></a>
 </body>
 </html>

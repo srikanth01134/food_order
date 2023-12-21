@@ -8,11 +8,13 @@
 <body>
     <form action="" method="post">
         {% csrf_token %}
-        <label for="">Enter Name:</label>
-        <input type="text" name="username"><br>
-        <label for="">Enter Phone:</label>
-        <input type="tel" name="phone"><br>
-        <input type="submit" value="Confirm to Buy">
+        <label for="name">Enter Name:</label>
+        <input type="text" name="username" id="name"><br>
+        <label for="phoneNo">Enter Phone:</label>
+        <input type="tel" name="phone" id="phoneNo"><br>
+        <label for="Address">Enter Your address</label>
+        <textarea name="Address" id="Address" cols="30" rows="10">Address</textarea>
+        <input type="submit"  value="confirm to buy_app">
         <br> 
     </form>
 </body>

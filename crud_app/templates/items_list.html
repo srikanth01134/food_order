@@ -26,7 +26,6 @@
             <th>image</th>
             <th>update</th>
             <th>Delete</th>
-            <th>add_to cart</th>
         </tr>
         {% for i in form %}
         <tr>
@@ -43,11 +42,9 @@
         {% endfor %}
     </table>
     {% else %}
-        <h2>Data not found</h2>
     {% endif %}
-    <div style="text-align: center;">
-     <a href="{% url 'crud_app:items'%}"><button>Back to items</button></a> 
-    </div>
-    <a href="{% url 'cart_app:cart_list' %}"><button>cart</button></a>
+    <a href="{% url 'owner_app:sample_home_view' %}"><button>
+        Home
+    </button></a>
 </body>
 </html>
