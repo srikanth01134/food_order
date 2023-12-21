@@ -4,38 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>category_for_user</title>
+    <!-- BELOW GOOGLE FONTS LINK -->
+  
     <style>
         *{
-            margin: 0%;
             padding: 0%;
-            font-size: medium;
+            margin: 0%;
+        }
+        #cust-category{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 5%;
         }
         #cust-items{
+            width:40%;
             border: 1px solid;
-            margin: 2px ;
-            width: 30%;
+            margin: 10px;
+            -webkit-box-shadow: 0px 1px 8px 4px rgba(0,0,0,0.84); 
+box-shadow: 0px 1px 8px 4px rgba(0,0,0,0.84);
         }
-        #cust-items1{
-            display:flex;
-        }
-        
     </style>
 </head>
 <body>
-<div id="cust-items1">
+
+    {% include 'partials/_category_header.html' %}
+<div id="cust-category">
     {% if data %}
-    
         {% for i in data %}
         <div id="cust-items">
-            <h1>{{i.category_name}}</h1>
-            <a href="{% url 'proapp18:items_user' hotel=i.hotel_id  category=i.category_id %}"><h1><img src="{{i.category_image.url}}" alt="" height="150px" width="150px"></h1></a>
-            <h1>{{i.category_desc}}</h1>
+            <h4>{{i.category_name}}</h4>
+            <a href="{% url 'proapp18:items_user' hotel=i.hotel_id  category=i.category_id %}"><img src="{{i.category_image.url}}" alt="" height="150px" width="150px"></a>
+            <p>{{i.category_desc}}</p>
         </div>
         {% endfor %}
     
     {% endif %}
-    <a href="{% url 'cart_app:cart_list' pk=hotel_id %}"><button>Cart</button></a>
+    
 </div>
 <a href="{% url 'proapp18:home'%}"><button>Hotel home</button></a>
+{% include 'partials/_footer.html' %}
 </body>
 </html>

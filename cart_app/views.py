@@ -5,7 +5,7 @@ from django.db.models import Sum,Avg,Count
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-@login_required(login_url='/crud_app/login')
+@login_required(login_url='/proapp18/login/')
 def cart_register(request):
     if request.method=='POST':
         print(request.POST)
@@ -18,7 +18,7 @@ def cart_register(request):
 
 
 
-@login_required(login_url='/crud_app/login')
+@login_required(login_url='/proapp18/login/')
 def cart_view(request,pk):
     res=cart_model.objects.filter(customer_id=request.user.id,hotel_id=pk)
     for i in res:
@@ -27,7 +27,7 @@ def cart_view(request,pk):
     total_price=cart_model.objects.filter(customer_id=request.user.id,hotel_id=pk).aggregate(Sum('total_price'))
     return render(request=request,template_name='cart_list.html',context={'res':res,'prod_data':prod_data,'total_price':total_price['total_price__sum'],'hotel_id':pk})
     
-@login_required(login_url='/crud_app/login')
+@login_required(login_url='/proapp18/login/')
 def cart_remove(request,cart_id,hotel_id):
     cart_model.objects.filter(cart_id=cart_id).delete()
     messages.success(request,"item is removed")

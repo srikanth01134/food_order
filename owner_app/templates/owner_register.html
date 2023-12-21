@@ -6,27 +6,63 @@
     <title>owner_register</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/owner_register.css' %}">
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+fieldset{
+    display: flex;
+    margin: auto;
+    color: antiquewhite;
+    content-visibility:auto;
+    background-image: url("{% static 'images/img.avif'%}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: -1px 7px 50px 31px rgba(0,0,0,1);
+-webkit-box-shadow: -1px 7px 50px 31px rgba(0,0,0,1);
+-moz-box-shadow: -1px 7px 50px 31px rgba(0,0,0,1);
+    
+}
+#login{
+    text-align: center;
+    margin-top: 20%;
+    border-top: 1px solid;
+    background-color: aliceblue;
+    width: 100%;
+}
+#h1-r{
+    text-align: center;
+    color: rgb(10, 18, 25);
+    padding-bottom: 20px;
+}
+
+    </style>
 </head>
 <body>
-    <!-- {%include 'partials/_header.html'%} -->
     {%if messages %}
     {% for i in messages %}
     <h5>{{i}}</h5>
     {% endfor %}
     {% endif %}
-    <form action="" method="post" enctype="multipart/form-data" class="p-3 mb-2 bg-warning text-dark">
+    <div>
+        <h1 id="h1-r">Please Register Here</h1>
+    <fieldset>
+    <form action="" method="post" enctype="multipart/form-data" id="form">
         {% csrf_token %}
     <table>
-        {{form}}
+        {{form.as_p}}
     </table>
     <input type="submit" value="Register">
     </form>
-    <a href="{% url 'owner_app:owner_login_view' %}"><button>login</button></a>
-    <div>
-        <!-- {% include "partials/_boostjs.html" %} -->
-
+</fieldset>
+    
+    <div id="login">
+        <h3>if your already register login!!!</h3><a href="{% url 'owner_app:owner_login_view' %}"><button>
+            login</button></a>
+        </div>
+        {% include 'partials/_footer.html' %}
 </div>
-
-
+</div>
 </body>
 </html>

@@ -3,57 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/hotel1.css'%}">
-    <style>
+    <!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'css/hotel1.css'%}"> -->
 
-      #div1{
-        display: flex;
-        flex-wrap: wrap;
-        font-size: large;
-      }
-      #div-home{
-        border: 1px solid;
-        padding: 10px;
-
-      }#ul-home{
-        display: flex;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: larger;
-        align-items: center;
-        justify-content: space-evenly;
-        border: 1px solid red;
-        padding: 10px;
-      }
-      a{
-        text-decoration: none;
-        color: black;
-      }
-      #nav-home{
-        padding: 10px;
-      }
-      #h1-home{
-        width: 30%;
-        font-size: large;
-        padding: 0%;
-        margin: 0%;
-      }
-    </style>
+  <!-- BELOW GOOGLE FONTS LINK -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap" rel="stylesheet">
     <title>Home_page</title>
 </head>
 <body>
-  <!-- {% include 'partials/_header.html' %} -->
-  <header>
-    <nav id="nav-home">
-      <ul type="none" id="ul-home"> 
-      <h1 id="h1-home">welcom to Your place</h1>
-      <li><a href="{% url 'proapp18:customer_update' pk=user.id %}">profile</a></li>
-      <li><a href="{% url 'proapp18:logout' %}">logout</a></li>
-      <li><a href="{% url 'buy_app:order_details' %}">Your Orders</a></li>
-    </ul>
-    </nav>
-  </header>
-<h4>{{user}}</h4> 
+ {% include 'partials/_header.html' %}
 <div id="div1">   
   
   {% if data %}
@@ -70,19 +30,7 @@
     {% endfor %}
     {% endif %}
   </div>
-  <div>
-    {% if data %}
-        {% for i in data %}
-        <div id="cust-items">
-            <h1>{{i.category_name}}</h1>
-          <img src="{{i.category_image.url}}" alt="" height="150px" width="150px"></a>
-            <h1>{{i.category_desc}}</h1>
-        </div>
-        {% endfor %}
-    
-    {% endif %}
-      </div>
-  </div>
+  
   {% include 'partials/_footer.html' %}
 </body>
 </html>

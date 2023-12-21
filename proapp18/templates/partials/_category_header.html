@@ -50,7 +50,7 @@ href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
         padding: 5px;
       }
       #nav-home{
-        padding: 10px;
+      padding: 2%;
       }
       #h1-home{
         width: 30%;
@@ -78,6 +78,7 @@ href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
       <li><a href="{% url 'proapp18:customer_update' pk=user.id %}"><i class="fa-solid fa-user" class="icon-user"></i>profile</a></li>
       <li><a href="{% url 'proapp18:logout' %}"><i class="fa-solid fa-right-from-bracket" class="icon-user"></i>logout</a></li>
       <li><a href="{% url 'buy_app:order_details' %}"><i class="fa-regular fa-chart-tree-map"></i>Your Orders</a></li>
+      <li><a href="{% url 'cart_app:cart_list' pk=hotel_id %}"><i class="fa-solid fa-cart-shopping"></i>cart</a></li>
     </ul>
     </nav>
   </header>

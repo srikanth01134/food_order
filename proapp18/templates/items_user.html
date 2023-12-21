@@ -20,6 +20,7 @@
     </style>
 </head>
 <body>
+    {% include 'partials/_header.html' %}
     <div id="cust-items">
         {% if data %}
             {% for i in data %}
@@ -47,9 +48,11 @@
             </form>
         </div>
             {% endfor %}
-        
         {% endif %}
     </div>
     <a href="{% url 'proapp18:home'%}"><button>Hotel home</button></a>
+    <footer>
+        {% include 'partials/_footer.html' %}
+        </footer>
 </body>
 </html>

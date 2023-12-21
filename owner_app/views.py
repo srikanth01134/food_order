@@ -102,7 +102,7 @@ def otp_view(request,pk):
             return redirect(f'/owner_app/sub_login_view/')
     return render(request=request, template_name='owner_otp.html')
 
-@login_required(login_url='owner_app/owner_login/')
+@login_required(login_url='/owner_app/owner_login_view/')
 def sample_home_view(request):
     res=category_model.objects.filter(hotel_id=request.user.id)
     return render(request,'sample.html',context={'res':res})
@@ -133,6 +133,7 @@ def logout_view(request):
     logout(request)
     return redirect('/owner_app/owner_login_view/')
 
+@login_required(login_url='/owner_app/owner_login_view/')
 def items_display_view(request,pk):
     res=food_model.objects.filter(category_id=pk)
     return render(request=request,template_name='items_display.html',context={'res':res})

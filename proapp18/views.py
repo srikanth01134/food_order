@@ -119,7 +119,7 @@ def items_user_view(request,hotel,category):
     return render(request=request,template_name='items_user.html',context={'data':res})
 
 
-
+otp_confirm=None
 def forget_password_view(request):
     res=customer_model.objects.all().values_list('email')
     print(res)

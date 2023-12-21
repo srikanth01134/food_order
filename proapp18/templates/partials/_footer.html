@@ -4,14 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link
+rel="stylesheet"
+href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+>
+
+<link
+rel="stylesheet"
+href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+>
+
+
+    <style>
+      #p{
+        /* border: 2px solid red; */
+        width: 100%;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+      }
+      #footerPart{
+        border: 2px solid black;
+        width: 100%;
+        flex-basis: 30%;
+        display: flex;
+        justify-content: space-evenly
+        ;
+        align-items: center;
+
+      }
+      a{
+        text-decoration: none;
+        font-size: x-large;
+        color: black;
+      }
+    </style>
 </head>
 <body>
-    {% include 'partials/_booscss.html' %}
-    <footer class="footer">
-        <div class="container">
-          <p>&copy; 2023 Your Food Website. All Rights Reserved.</p>
-          <p>Designed with <i class="bi bi-heart-fill text-danger"></i>confusion</p>
-        </div>
+    <div id="p">
+      <footer id="footerPart">
+        <p><a href="mailto:srikanthpasam76@gmail.com"><i class="fa-sharp fa-solid fa-envelope"></i>EMAIL  </a></p>
+        <p><a href="tel:6302141118">Contact  Us</p> 
+&copy; Copyright 2023</a>
+      </footer>
+    </div>
 </body>
 </html>
