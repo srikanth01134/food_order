@@ -101,7 +101,6 @@ def logout_view(request):
     logout(request)
     return redirect('/proapp18/login')
 
-
 @login_required(login_url='/login')
 def home_view(request):
     res=owner_model.objects.all()

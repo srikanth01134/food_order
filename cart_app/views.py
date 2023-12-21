@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/proapp18/login/')
 def cart_register(request):
     if request.method=='POST':
-        print(request.POST)
         res=cart_model.objects.create(customer_id=request.POST['customer_id'],your_item_id=request.POST['your_item_id'],your_item_name=request.POST['your_item_name'],price=int(float(request.POST['price'])),quantity=request.POST['quantity'],hotel_id=request.POST['hotel_id'],total_price=int(float(request.POST['price']))*int(request.POST['quantity']))
         messages.success(request,"Item is added in cart")
         hotel=request.POST['hotel_id']
@@ -21,8 +20,6 @@ def cart_register(request):
 @login_required(login_url='/proapp18/login/')
 def cart_view(request,pk):
     res=cart_model.objects.filter(customer_id=request.user.id,hotel_id=pk)
-    for i in res:
-        print(i.__dict__)
     prod_data=food_model.objects.all()
     total_price=cart_model.objects.filter(customer_id=request.user.id,hotel_id=pk).aggregate(Sum('total_price'))
     return render(request=request,template_name='cart_list.html',context={'res':res,'prod_data':prod_data,'total_price':total_price['total_price__sum'],'hotel_id':pk})

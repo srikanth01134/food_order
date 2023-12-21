@@ -5,40 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/sample.css' %}">
+    <style>
+        #c-display{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+    #main{
+        border: 1px solid black;
+        width: 30%;
+        overflow: hidden;
+        font-family: sans-serif;
+        cursor: pointer;
+        text-align: center;
+    }
+    #buttons{
+        display: flex;
+        text-align: center;
+        justify-content: space-evenly;
+    }
+    
+</style>
 </head>
 <body>
-    <header id="" class="">
-        <nav  class="" id="">
-            <ul id="ul-owner">
-                <li><a href="{% url 'crud_app:catagory'%}">Category_create</a></li>
-                <li><a href="{% url 'crud_app:items' %}">Items_create</a></li>
-                <li><a href="#"><li>AboutUs</a></li>
-                <li><a href="{% url 'owner_app:logout'%}">logout</a></li>
-
-            </ul>
-        </nav>
-    </header>
-
-        {% if res %}
+    {% include 'partials/_header_owner.html'%}
     <div id="c-display">
+        {% if res %}
             {% for i in res %}
-    
-        <div id="main">
-            <h4>{{i.category_name}}</h4>
-            <a href="{% url 'owner_app:items_display_view' pk=i.category_id %}"><img src="{{i.category_image.url }}" alt="sorry" height="100px" width="100px"></a>
-            <h4>{{i.category_desc}}</h4>
-            <a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a>
-            <a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>Delete</button></a>
-            <a href="{% url 'crud_app:items' %}"><button>Items_create</button></a>
-        </div>
-   
-            {% endfor %}
-    </div> 
+            <div id="main">
+                <h4>{{i.category_name}}</h4>
+                <a href="{% url 'owner_app:items_display_view' pk=i.category_id %}"><img src="{{i.category_image.url }}" alt="sorry" height="100px" width="100px"></a>
+                <p>{{i.category_desc}}</p>
+            <div id="buttons">
+                <h4><a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a><br></h4>
+            <h4><a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>Delete</button></a><br></h4>
+        <h4><a href="{% url 'crud_app:items' %}"><button>Items_create</button></a></h4></div>
+            </div>
+            {% endfor %} 
         {% endif%}
-        
-        <a href="{% url 'owner_app:sample_home_view' %}"><button>
-            Home
-        </button></a>
+    </div>
 </body>
 </html>

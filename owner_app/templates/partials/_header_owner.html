@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <style>
+        *{
+        padding: 0%;
+        margin: 0%;
+        }
+        #spanowner{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .a{
+            text-decoration: none;
+            color: black;
+            padding: 10%;
+            font-size: x-large;
+           
+        }
+        #ul-owner{
+            display: flex;
+            justify-content: space-evenly;
+            padding: 1%;
+            list-style-type: none;
+        }
+        #nav{
+            border: 1px solid;
+            box-shadow: -3px 7px 73px 29px rgba(0,0,0,0.65);
+-webkit-box-shadow: -3px 7px 73px 29px rgba(0,0,0,0.6);
+-moz-box-shadow: -3px 7px 73px 29px rgba(0,0,0,0.6);
+            margin: auto;
+            width:90%;
+            overflow:hidden;
+        }
+        #header{
+            padding: 3%;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>welcome <span id="spanowner">{{user}}</span></h1>
+    <header id="header" class="">
+        <nav  class="" id="nav">
+            <ul id="ul-owner">
+                <li><a href="{% url 'crud_app:catagory'%}" class="a">Categorycreate</a></li>
+                <li><a href="{% url 'crud_app:items' %}" class="a">Itemscreate</a></li>
+                <li><a href="" class="a">AboutUs</a></li>
+                <li><a href="{% url 'owner_app:logout'%}" class="a">logout</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

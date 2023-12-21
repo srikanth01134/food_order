@@ -3,15 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>update profile</title>
+    {% load static %}
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        input{
+            padding: 5px;
+        box-shadow: 5px 3px 10px grey;
+        font-size: 14px;
+         font-weight: 600;
+        width: 300px;
+
+        }
+        label {
+            color: #1d1510;
+            font-weight: bold;
+            display: block;
+            width: 150px;
+            color: white;
+}
+form{
+    line-height: 150%;
+    padding-top: 6%;
+    
+}
+        
+    </style>
 </head>
 <body>
+    <fieldset>
+    <h2>Your Details are update and you have to use this  details only</h2>
     <form action="" method="post">
         {% csrf_token %}
-        <table>
         {{form}}
-        </table>
+        <br>
         <input type="submit" value="update" id="">
     </form>
+</fieldset>
 </body>
 </html>

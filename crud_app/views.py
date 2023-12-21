@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-@login_required(login_url='/owner_app/owner_login_view/')
+
 def catagory_view(request):
     form=category_form()
     if request.method=='POST' and request.FILES:

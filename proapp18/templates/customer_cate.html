@@ -26,8 +26,9 @@ box-shadow: 0px 1px 8px 4px rgba(0,0,0,0.84);
     </style>
 </head>
 <body>
-
-    {% include 'partials/_category_header.html' %}
+    <div>
+ {% include 'partials/_category_header.html' %}
+</div>
 <div id="cust-category">
     {% if data %}
         {% for i in data %}
@@ -37,9 +38,7 @@ box-shadow: 0px 1px 8px 4px rgba(0,0,0,0.84);
             <p>{{i.category_desc}}</p>
         </div>
         {% endfor %}
-    
     {% endif %}
-    
 </div>
 <a href="{% url 'proapp18:home'%}"><button>Hotel home</button></a>
 {% include 'partials/_footer.html' %}

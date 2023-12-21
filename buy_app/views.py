@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/proapp18/login/')
 def buy_register(request,total_price):
     if request.method == 'POST':
-        print("haii")
         buy=buy_model.objects.create(customer_id=request.user.id,total_price=total_price,customer_name=request.POST['username'],customer_phoneno=request.POST['phone'],customer_address=request.POST['Address'],)
         res=cart_model.objects.filter(customer_id=request.user.id).values()
         for i in res:

@@ -1,24 +1,2 @@
-ul{
-    display: flex;
-    list-style-type: none;
-    font-size: x-large;
-    justify-content: end;
-    justify-content: space-evenly;
-    border: 2px solid;
-}
-#c-display{
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid green;
-    justify-content: space-between;
-}
 
-#main{ 
-    height: 400px;
-    width: 400px;
-    border: 1px solid;
-}
-*{
-    margin: 0%;
-    padding: 0%;
-}
+
