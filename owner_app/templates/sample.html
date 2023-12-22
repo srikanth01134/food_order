@@ -10,20 +10,16 @@
             display: flex;
             justify-content: space-evenly;
             flex-wrap: wrap;
+            text-align: center;
         }
     #main{
-        border: 1px solid black;
-        width: 30%;
+        width: 20%;
         overflow: hidden;
-        font-family: sans-serif;
+        background-color: rgb(177, 223, 223);
+        border-radius: 5%;
         cursor: pointer;
-        text-align: center;
-    }
-    #buttons{
-        display: flex;
-        text-align: center;
-        justify-content: space-evenly;
-    }
+        margin-top: 3%;
+    } 
     
 </style>
 </head>
@@ -36,13 +32,14 @@
                 <h4>{{i.category_name}}</h4>
                 <a href="{% url 'owner_app:items_display_view' pk=i.category_id %}"><img src="{{i.category_image.url }}" alt="sorry" height="100px" width="100px"></a>
                 <p>{{i.category_desc}}</p>
-            <div id="buttons">
-                <h4><a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a><br></h4>
-            <h4><a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>Delete</button></a><br></h4>
-        <h4><a href="{% url 'crud_app:items' %}"><button>Items_create</button></a></h4></div>
+                <a href="{% url 'crud_app:updates' pk=i.category_id %}"><button>update</button></a>
+                <a href="{% url 'crud_app:deletes' pk=i.category_id %}"><button>Delete</button></a>
+                <a href="{% url 'crud_app:items' %}"><button>Items_create</button></a>
             </div>
             {% endfor %} 
         {% endif%}
     </div>
+
+    {% include 'partials/_footer.html' %}
 </body>
 </html>
