@@ -4,6 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login_page</title>
+    {% load static %}
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+/* Basic styling for the form container */
+div {
+    margin-bottom: 15px;
+}
+
+/* Style for labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Style for text input and password input fields */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+/* Add transitions for a smoother user experience */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007BFF;
+}
+
+/* Styling for the submit button */
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+input[type="submit"]:hover {
+    background-color: #22272c;
+    transform: scale(1.05);
+    box-shadow: 5px 6px 8px rgba(0, 20, 0, 0.2); /* Adjust box shadow on hover */
+}
+
+fieldset{
+    padding: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin:10% auto;
+    border-radius: 2%;
+	box-shadow: 0 0 15px -2px #444444;
+}
+body{
+    background-image: url("{% static 'images/header.png' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+    </style>
 </head>
 <body>
     {%if messages %}
@@ -11,6 +83,8 @@
     <h5>{{i}}</h5>
     {% endfor %}
     {% endif %}
+    <div id="sub-log">
+    <fieldset>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
@@ -18,5 +92,7 @@
         </table>
         <input type="submit" value="login">
     </form>
+</fieldset>
+</div>
 </body>
 </html>

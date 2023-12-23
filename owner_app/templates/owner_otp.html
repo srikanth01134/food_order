@@ -3,15 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
     <title>OTP_PAGE</title>
+    <style>
+    body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: brightness(80%);
+    color: #110e0e;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #0b0909;
+    padding: 10px 20px;
+    border: none;
+}
+
+    </style>
 </head>
 <body>
     <h1>OTP Confirm</h1>
-    <form action="" method="post">
+    <fieldset>
+    <form action="" method="post" class="container">
         {% csrf_token %}
         <label for="id_otp">Enter OTP</label>
         <input type="text" name="otp_confirm" id="id_otp"><br>
         <input type="submit" value="OTP SUBMIT">
     </form>
+</fieldset>
 </body>
 </html>

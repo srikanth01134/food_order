@@ -6,39 +6,66 @@
     <title>Document</title>
     {% load static %}
     <style>
-        *{
-        padding: 0%;
-        margin: 0%;
+   body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* Light gray background color */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#spanowner {
+    color: #007BFF; /* Blue color for the user span */
+}
+
+header {
+    background-color: #333; /* Dark gray background for the header */
+    padding: 10px 0;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.a {
+    text-decoration: none;
+    color: #fff; /* White color for navigation links */
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.a:hover {
+    color: #007BFF; /* Blue color on hover */
+}
+
+@media (max-width: 768px) {
+    ul {
         text-align: center;
-        }
-        #spanowner{
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .a{
-            text-decoration: none;
-            color: black;
-            padding: 10%;
-            font-size: x-large;
-           
-        }
-        #ul-owner{
-            display: flex;
-            justify-content: space-evenly;
-            padding: 1%;
-            list-style-type: none;
-        }
-        #nav{
-            border: 1px solid;
-            box-shadow: -3px 7px 73px 29px rgba(0,0,0,0.5);
--webkit-box-shadow: -3px 7px 73px 29px rgba(0,0,0,0.2);
--moz-box-shadow: -3px 7px 73px 29px rgba(0,0,0,0);
-            margin: auto;
-            width:90%;
-            overflow:hidden;
-        }
-        #header{
-            padding: 3%;
-        }
+        margin-top: 10px;
+    }
+
+    li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
     </style>
     
 </head>

@@ -88,7 +88,7 @@ def change_pass_view(request,pk):
                     send_mail(subject=subject,message=msg,from_email = settings.EMAIL_HOST_USER, recipient_list=[email,])
                     login(request, res)  
                     return redirect(f'/owner_app/otp_view/{pk}')
-    return render(request=request,template_name='change_password.html',context={'form':form})
+    return render(request=request,template_name='ownerchange_password.html',context={'form':form})
 
 
 def otp_view(request,pk):

@@ -18,6 +18,7 @@ from django.contrib.auth.models import User
 def start_view(request):
     return render(request,'index.html')
 
+
 def customer_register(request):
     form = customer_form()
     if request.method == 'POST':

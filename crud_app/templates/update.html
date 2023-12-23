@@ -5,8 +5,56 @@
     <meta name="viewport" content="width=
     , initial-scale=1.0">
     <title>update_page</title>
+    <style>
+        /* Apply a simple reset to remove default margins and padding */
+ label, input, textarea {
+  margin: 0;
+  padding: 0;
+}
+
+/* Add some basic styling to the container divs */
+
+
+/* Style the labels for better readability */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style the text input and textarea */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style the file input */
+input[type="file"] {
+  margin-top: 5px;
+}
+
+/* Add some basic responsiveness for smaller screens */
+@media screen and (max-width: 600px) {
+  input[type="text"],
+  textarea {
+    width: calc(100% - 20px);
+  }
+}
+form{
+    width: 50%;
+    padding: 10%;
+}
+
+    </style>
 </head>
-<body> {% include 'partials/_messages.html' %}
+<body> 
+    
+    {% include 'partials/_messages.html' %}
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}

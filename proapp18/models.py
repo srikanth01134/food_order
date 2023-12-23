@@ -7,6 +7,7 @@ class customer_model(User):
     dob = models.DateField(auto_now=False,auto_now_add=False)
     gender = models.CharField(max_length=10,choices=[['Male','Male'],['Female','Female']])
 
+
 class hotel_register(models.Model):
     id=models.IntegerField(primary_key=True)
     restarunt_name=models.CharField(max_length=50)

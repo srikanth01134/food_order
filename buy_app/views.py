@@ -35,7 +35,7 @@ def order_details(request,buy_id):
 
 @login_required(login_url='/proapp18/login/')
 def order_details_view(request):
-    cust_details=buy_model.objects.all()
+    cust_details=buy_model.objects.filter(customer_id=request.user.id)
     items_details=buyed_item_list.objects.all()
     return render(request,'order_details.html',context={'cust_details':cust_details,'items_details':items_details,})
 
