@@ -6,60 +6,82 @@
     , initial-scale=1.0">
     <title>update_page</title>
     <style>
-        /* Apply a simple reset to remove default margins and padding */
- label, input, textarea {
-  margin: 0;
-  padding: 0;
+       /* Default Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-/* Add some basic styling to the container divs */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-
-/* Style the labels for better readability */
 label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+    display: block;
+    margin-bottom: 8px;font-size: xx-large;
+
 }
 
-/* Style the text input and textarea */
 input[type="text"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-/* Style the file input */
+textarea,
 input[type="file"] {
-  margin-top: 5px;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    font-size: large;
 }
 
-/* Add some basic responsiveness for smaller screens */
-@media screen and (max-width: 600px) {
-  input[type="text"],
-  textarea {
-    width: calc(100% - 20px);
-  }
+/* Light Theme */
+.light-theme {
+    background-color: #fff;
+    color: #333;
+    
 }
-form{
-    width: 50%;
-    padding: 10%;
+
+/* Dark Theme */
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+
+/* Responsive Design */
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Additional Styling for File Input */
+input[type="file"] {
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Hover Effect for File Input */
+input[type="file"]:hover {
+    background-color: #e0e0e0;
 }
 
     </style>
 </head>
 <body> 
-    
+    <div class="container">
     {% include 'partials/_messages.html' %}
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data" class="colorful-theme">
         {% csrf_token %}
         {{form}}
-        <input type="submit" value="update" id="">
+        <input type="submit" value="update" id="" class="dark-theme">
     </form>
-
+  </div>
 </body>
 </html>

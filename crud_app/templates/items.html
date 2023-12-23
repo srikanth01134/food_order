@@ -4,14 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <style>
+        /* Default Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    font-size: x-large;
+    color: #333;
+    fill-opacity: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+textarea,
+input[type="number"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+/* Light Theme */
+.light-theme {
+    
+}
+
+/* Dark Theme */
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Colorful Theme */
+.colorful-theme {
+    background-color: #ffc107;
+    color: #333;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Additional Styling for File Input */
+input[type="file"] {
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Hover Effect for File Input */
+input[type="file"]:hover {
+    background-color: #e0e0e0;
+}
+
+    </style>
 </head>
-<body>
+<body > <div class="container">
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="add_item">
     </form>
-    <a href="{% url 'crud_app:items_list'%}"><button>Items_display</button></a>
+    
+</div>
+<a href="{% url 'crud_app:items_list'%}"><button>Items_display</button></a>
     <a href="{% url 'crud_app:catagory'%}"><button>Category</button></a>
 </body>
 </html>
