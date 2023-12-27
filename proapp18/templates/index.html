@@ -16,10 +16,14 @@
 <body>
     <header>
         <nav>
-            <li>Add Restaurant</li>
-            <li>AboutUs</li>
+            <li>About us</li>
+            <li><a href="{% url 'owner_app:owner_register' %}">Add Restaurant</a></li>
             <li>Contact Us</li>
         </nav>
     </header>
+    <main>
+        <a href="{% url 'proapp18:register'%}"><button>register</button></a>
+    <a href="{% url  'proapp18:login' %}"><button>login hear</button></a>
+    </main>
 </body>
 </html>
