@@ -5,28 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     
-    <style>
-        nav{
-            list-style-type: none;
-            display: flex;
-            border: 1px sol;
-        }
-    </style>
+   
     <title>welcome</title>
 </head>
 <body>
+
     {% include 'partials/_homeh.html' %}
     <header>
-        <nav>
-            <li>About us</li>
-            <li><a href="{% url 'owner_app:owner_register' %}">Add Restaurant</a></li>
-            <li>Contact Us</li>
-        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">IVAR Restaurant</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a href="" class="nav-link">About us</a> </li>
+            <li class="nav-item">
+                <a href="{% url 'owner_app:owner_register' %} " class="nav-link">Add Restaurant</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="tel:6302141118">Contact us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'proapp18:register'%}" class="nav-link">Register</a></li>
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+        
+        <main>
+            <section>
+                <img src="{% static 'images/foodhotel1.jpg'%}" class="rounded mx-auto d-block" alt="...">
+            </section>
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-8">
+                    </div>
+                  <div class="col-md-4">
+                    <h2>Restaurant News & Articles</h2>
+                    <div class="article-snippet">
+                      <h3>Article Title</h3>
+                      <img src="article-image.jpg" alt="Article Image">
+                      <p>Brief excerpt of the article...</p>
+                      <a href="#">Read More</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </main>
     </header>
-    <main>
-       
-        <a href="{% url 'proapp18:register'%}"><button>register</button></a>
-    <a href="{% url  'proapp18:login' %}"><button>login hear</button></a>
-    </main>
 </body>
 </html>
